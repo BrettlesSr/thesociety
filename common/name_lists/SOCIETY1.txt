@@ -1,0 +1,212 @@
+﻿### Society
+### Mostly cribbed from work by by Henrik Eklund
+
+SOCIETY1 = {
+	randomized = no
+	alias = "Society1"
+
+	ship_names = {
+
+		corvette = {
+			Lartius Flavus Aulus Postumius Albus Regillensis Manius Valerius Volusus Maximus Gaius Aemilius Mamercus Lucius Quinctius Cincinnatus Quintus Servilius Priscus Structus Fidenas Tubertus Publius Cornelius Rutilus Cossus Marcus Furius Camillus Capitolinus Manlius Appius Pennus Crispinus Ahala Sulpicius Peticus Marcius Imperiosus Torquatus Julius Iulus Ambustus Poplicola Corvus Crassus Philo Privernas Rufinus Papirius Varus Gnaeus Marcellus Cursor Arvina Lentulus Rullianus Poetilius Visolus Longus Junius Bubulcus Brutus Hortensius Caecus Barbula Calvinus Domitius Fulvius Centumalus Ogulnius Glicia Atilius Calatinus Coruncanius Duilius Caecilius Metullus Verrucosus Veturius Pera Fabius Buteo Centho Flaccus Livius Scaeva Salinator Geminus Drusus Spurius Cassius Viscellinus Aebutius Elva Sempronius Atratinus Mamercinus Scapula Natta Servius Maluginensis Plautius Proculus Scipio Denter Hortator Potitus Antonius Albinus Paetus Foslius Flaccinator Cerretanus Decius Titinius Paullus Philippus Laetorius Plancianus Cotta Numerius Flaminius Minucius Pomponius Gracchus Metellus Pulex Velox Acutus Ensatus Erosus Excelsus Ingratus Lancea Magnus Nitidus Ophis Sanctus Verrucosus Virosus Ferox Merus Pulcher Currus Malleus Spina Accipiter Anguis Apis Aquila Corvus Leo Lupus Papilio Passer Strix Ursus Vespa Viverra Vulpes Sagittarii Scutum Parma Cetra Dolabra Tribulus
+		}
+		
+		destroyer = {
+			Abundantia "Acca Larentia" Acis Aerecura Aequitas Aesculapius Aeternitas Aeon "Aius Locutius" Alernus Angerona Angitia "Anna Perenna" Annona Antevorta "Arkeus Ultor" Arimanius Aura Averruncus "Bona Dea" "Bonus Eventus" Bubona Caca Cacus Caelus Camenae Cardea Carmenta Carna Clementia Cloacina Consus Cupid Cura Cybele "Dea Dia" "Dea Tacita" Decima Devera "Dius Fidius" Disciplina Egeria Empanda Epona Falacer Fama Fascinus Fauna Faunus Faustitas Februus Febris Fecunditas Felicitas Ferentina Feronia Fornax Fufluns Fulgora Furrina Gratiae Hermaphroditus Honos Hora Indiges Intercidona Inuus Invidia Justitia Juturna Juventas Laverna Latona Lemures Levana Letum Libertas Libitina Lua Lucifer Lupercus Lympha "Mana Genita" Manes Mantus "Mater Matuta" Meditrina Mephitis Mellonia Moneta Mors Murcia "Mutunus Tutunus" Naenia Nascio Necessitas Neverita Nona Nox Palatua Pax Picumnus Picus Pilumnus Poena Pomona Porrima Portunes Postverta Priapus Pudicitia Quirtis Robigus Rumina Silvanus Somnus Soranus Sors Spes "Stata Mater" Sterquilinus Suedala Summanus Tiberinus Tibertus Tranquillitas Trivia Ubertas Unxia Vacuna Vediovus Venelia Verminus Vertumnus Viduus Virbius Volturnus Voluptas
+		}
+		
+		cruiser = {
+			Jupiter Juno Mars Venus Bellona Minerva Janus Vesta Saturn Genius Mercury Apollo Vulcan Neptune Victoria Virtus Tellus Ceres Luna Diana Feronia Novensides Pales Salus Fortuna Fons Fides Opis Flora Vediovis Summanus Larunda Terminus Quirinus Vortumnus Lares Lucina Aurora Bacchus Concordia Hercules Mithras Nemesis Nerio Pietas Pluto Proserpina Providentia Salacia Sancus Securitas Orcus Liber Tempestas "Vica Pota" Victrix Ferrata Fidelis Triumphalis Fulminata Liberatrix Fortis Venator Felix Firma Rapax Constantia Salutis Virtutis Caper Taurus Centaurus Aper Pegasus Ops Dacicus Olivus Asclepius Perseus Satyra Particus Tibur Pollux Salvia Sol Isis Castor Armata Salamina Rhenus Tigris Oceanus Eufrates Danubius Nilus Athenonix
+		}
+
+		battleship = {
+			Augustus Tiberius Caligula Claudius Nero Galba Otho Vitellius Vespasian Titus Domitian Nerva Hadrian "Antoninus Pius" "Marcus Aurelius" "Lucius Verus" Commodus Pertinax "Didius Julianus" "Septimus Severus" Caracalla Geta Macrinus Elagabalus "Severus Alexander" Maximinus Gordian Pupienus Balbinus Philip "Trajan Decius" Hostilian "Trebonianus Gallus" Aemilian Valerian Gallienus "Claudius Gothicus" Quintillus Aurelian Tacitus Florian Probus Carus Numerian Carinus Diocletian Maximian Constantius Galerius Severus Constantine Maxentius Licinius Constans Vetranio Julian Jovian Valentinian Valens Gratian Theodosius Sulla "Gaius Marius" Agrippa
+		}
+
+		titan = {
+			"Julius Caesar" "Imperator Augustus" Romulus Remus Trajan
+		}
+
+		colossus = {
+			"Pax Social" "Sol Invictus"
+		}
+		
+		science = {
+			Plinius Acoreus Adrastus Hyginus Gallus Pytheas Diodorus Posidonius Anaximander Callippus Hephaestio Ptolemy Alypius Mucianus Isidore Strabo "Pomponius Mela" Marinus Pausanias Agathodaemon Dionysius Agathemerus Marcian "Julius Honorius" "Polemius Silvius"
+		}
+		
+		colonizer = {
+			Achaea Belgica Germania Africa Aegyptus Anatolia Arabia Ariana Asia Britannia Caledonia Cilicia Gallia Dacia Cyrenaica Cambria Graecia Hispania Illyria Italia Libya Lusitania
+		}
+		
+		constructor = {
+			Macedonia Mauretania Noricum Numidia Palaestina Parthia Phoenicia Ruthenia Scythia Serica Syria Thracia Hibernia
+		}
+		
+		transport = {
+			Legionarius Aeneator Aquilifer Bucinator Cornicen Draconarius Signifer Tablifer Tubicen Vexillarius
+		}
+		
+		military_station_small = { 
+			Gladius Spiculum Verutum Lancea Pugio Spatha Hasta Plumbata
+		}
+
+		ion_cannon = {
+			Ballista Scorpio Javelin Pilum
+		}
+		
+	}
+
+	fleet_names = {
+		random_names = {
+			
+		}
+		sequential_name = "Classis %R%"
+	}
+	
+	army_names = {
+		generic = { 
+			sequential_name = "Limitanei %R%"
+		}
+
+		assault_army = {
+			sequential_name = "Legio %R%"
+		}
+		
+		slave_army = {
+			sequential_name = "Auxilia %R%"
+		}
+		
+		clone_army = {
+			sequential_name = "Clonandi %R%"
+		}
+		
+		robotic_army = {
+			sequential_name = "Robotum %R%"
+		}
+
+		robotic_defense_army = {
+			sequential_name = "Limitanei Robotum %R%"
+		}
+		
+		android_army = {
+			sequential_name = "Robotum Superior %R%"
+		}
+
+		android_defense_army = {
+			sequential_name = "Limitanei Robotum Superior %R%"
+		}
+		
+		psionic_army = { 
+			sequential_name = "Legio Psychica %R%"
+		}
+		
+		xenomorph_army = {
+			sequential_name = "Bestia Auxilia %R%"
+		}
+		
+		gene_warrior_army = {
+			sequential_name = "Legio Praetoriae %R%"
+		}
+	}
+
+	### PLANETS
+
+	planet_names = {
+
+		generic = {
+			names = {
+				"Nova Roma" "Nova Serica" "Nova Parthia" "Nova Arabia" "Nova Aegyptus" Scandia Hibernia Thule Elysium Illyria Panchaea Neritum Nysa Pedasus Hesperides Hyperborea Ithaca Lyrnessus Telepylos Lyrcea Hades Olympia Aquilo Favonius Auster Eurus Caledonia Scythia Argyre Silpium Thrinacia Tritonis Phlegra Acherusia "Colonia Aurora" "Colonia Augusta" "Colonia Pacifica" "Colonia Traiana" "Colonia Emerita" Eboracum Ascrivium Brigantium Rhegium Spalatum Patavium Antiochia
+			}
+		}
+		
+		pc_desert = {
+			names = {
+				
+			}
+		}
+		
+		pc_tropical = {
+			names = {
+				
+			}
+		}
+		
+		pc_arid = {
+			names = {
+				
+			}
+		}
+		
+		pc_continental = {
+			names = {
+				
+			}
+		}
+		
+		pc_gaia = {
+			names = {
+				
+			}
+		}
+		
+		pc_ocean = {
+			names = {
+				
+			}
+		}
+		
+		pc_tundra = {
+			names = {
+				
+			}
+		}
+		
+		pc_arctic = {
+			names = {
+				
+			}
+		}
+
+		pc_savannah = {
+			names = {
+			}
+		}
+
+		pc_alpine = {
+			names = {
+			}
+		}
+		
+	}
+
+	### CHARACTERS
+
+	character_names = {
+
+		names1 = {
+			weight = 40
+			first_names_male = {
+				Agrippa Appius Aulus Caeso Decimus Drusus Faustus Gaius Gallus Gnaeus Hostus Lucius Mamercus Manius Marcellus Marcus Mettius Nonus Numerius Octavius Opiter Paullus Postumus Primus Proculus Publius Quintus Septimus Sertor Servius Sextus Spurius Statius Tiberius Titus Tullus Vibius Volesus Vopiscus
+			}
+			first_names_female = {
+				Appia Aula Caesula Decima Fausta Gaia Gnaea Hosta Lucia Maio Mamerca Mania Marcia Maxima Mettia Mino Nona Numeria Octavia Paulla Postuma Prima Procula Publia Quarta Quinta Secunda Septima Servia Sexta Spuria Statia Tertia Titia Tiberia Tulla Vibia Volusa Vopisca
+			}
+			second_names = {
+				"au Aburius" "au Accius" "au Accoleius" "au Acilius" "au Aebutius" "au Aedinius" "au Aelius" "au Aemilius" "au Albanius" "au Albatius" "au Allectius" "au Amatius" "au Annius" "au Antistius" "au Antius" "au Antonius" "au Appuleius" "au Aquillius" "au Armenius" "au Arrius" "au Arsinius" "au Artorius" "au Asinius" "au Ateius" "au Atius" "au Atilius" "au Atrius" "au Attius" "au Aufidius" "au Aurelius" "au Aurius" "au Ausonius" "au Avidius" "au Avitus" "au Axius" "au Baebius" "au Balventius" "au Bantius" "au Barbatius" "au Barrius" "au Bellona" "au Betilienus" "au Betucius" "au Blandius" "au Blossius" "au Bruttius" "au Bucculeius" "au Burrienus" "au Caecilius" "au Caecina" "au Caecius" "au Caedicius" "au Caelius" "au Caeparius" "au Caepasius" "au Caerellius" "au Caesennius" "au Caesetius" "au Caesius" "au Caesonius" "au Caesulenus" "au Caetronius" "au Calavius" "au Calidius" "au Calpurnius" "au Calventius" "au Calvisius" "au Camillius" "au Camelius" "au Canidius" "au Caninius" "au Canius" "au Cantilius" "au Cantius" "au Canuleius" "au Canutius" "au Carfulenus" "au Carisius" "au Carius" "au Caristanius" "au Carpinatius" "au Carteius" "au Carvilius" "au Cassius" "au Castricius" "au Castrinius" "au Catius" "au Catienus" "au Catilius" "au Ceionius" "au Centenius" "au Cestius" "au Cicereius" "au Cilnius" "au Cincius" "au Cispius" "au Claudius" "au Clodius" "au Cloelius" "au Clovius" "au Cluilius" "au Cluentius" "au Cluvius" "au Cocceius" "au Cominius" "au Consentius" "au Considius" "au Coponius" "au Cordius" "au Corfidius" "au Cornelius" "au Cornificius" "au Coruncanius" "au Cosconius" "au Cossinius" "au Cossutius" "au Cotius" "au Cottius" "au Crassitius" "au Crepereius" "au Critonius" "au Cupiennius" "au Curiatius" "au Curius" "au Curtilia" "au Curtius" "au Cuspius" "au Decimius" "au Decius" "au Dellius" "au Desticius" "au Dexsius" "au Didius" "au Digitius" "au Dillius" "au Domitius" "au Duccius" "au Duilius" "au Durmius" "au Duronius" "au Egilius" "au Egnatius" "au Egnatuleius" "au Ennius" "au Epidius" "au Eppius" "au Equitius" "au Erucius" "au Fabii" "au Fabius" "au Fabricius" "au Fadius" "au Faenius" "au Falcidius" "au Falerius" "au Fannius" "au Farsuleius" "au Faucius" "au Favonius" "au Festinius" "au Fidiculanius" "au Flaminius" "au Flavius" "au Flavinius" "au Flavonius" "au Floridius" "au Florius" "au Floronius" "au Fonteius" "au Foslius" "au Fuficius" "au Fufidius" "au Fufius" "au Fulcinius" "au Fulvius" "au Fundanus" "au Furius" "au Furnia" "au Gabinius" "au Galerius" "au Gallius" "au Gargonius" "au Gavius" "au Geganius" "au Gellius" "au Geminius" "au Genucius" "au Gessius" "au Granius" "au Gratius" "au Gratidius" "au Haterius" "au Heius" "au Helvidius" "au Helvius" "au Herennius" "au Herminius" "au Hirrius" "au Hirtius" "au Hirtuleius" "au Horatius" "au Hortensius" "au Hosidius" "au Hostilius" "au Iccius" "au Icilius" "au Insteius" "au Julius" "au Junius" "au Juventius" "au Laberius" "au Labienus" "au Lacerius" "au Laelius" "au Laenius" "au Laetilius" "au Laetorius" "au Lafrenius" "au Lamponius" "au Laronius" "au Lartius" "au Latinius" "au Lavinius" "au Lecanius" "au Lentidius" "au Liburnius" "au Licinius" "au Ligarius" "au Livius" "au Lollius" "au Longinius" "au Loreius" "au Lucceius" "au Lucienus" "au Lucilius" "au Lucius" "au Lucretius" "au Lurius" "au Luscius" "au Lusius" "au Lutatius" "au Macrinius" "au Maecilius" "au Maecius" "au Maelius" "au Maenius" "au Maevius" "au Magius" "au Mallius" "au Mamilius" "au Manilia" "au Manlius" "au Manilius" "au Marcius" "au Marius" "au Matius" "au Matienus" "au Matinius" "au Matrinius" "au Maximius" "au Memmius" "au Menenius" "au Menius" "au Mescinius" "au Messienus" "au Messius" "au Metilius" "au Mettius" "au Milonius" "au Mimesius" "au Minatius" "au Minicius" "au Minidius" "au Minucius" "au Modius" "au Mucius" "au Mummius" "au Munatius" "au Munius" "au Murrius" "au Mussidius" "au Mustius" "au Mutius" "au Naevius" "au Nasennius" "au Nasidienus" "au Nasidius" "au Nautius" "au Neratius" "au Nerius" "au Nigidius" "au Ninnius" "au Nipius" "au Nonius" "au Norbanus" "au Novellius" "au Novius" "au Numerius" "au Numicius" "au Numisius" "au Numitorius" "au Nummius" "au Numonius" "au Nymphidius" "au Obellius" "au Obultronius" "au Occius" "au Oclatinius" "au Oclatius" "au Octavenus" "au Octavius" "au Ofanius" "au Ofilius" "au Ogulnius" "au Ollius" "au Opellius" "au Opetreia" "au Opimius" "au Opiternia" "au Oppidius" "au Oppius" "au Opsidius" "au Opsilius" "au Opsius" "au Oranius" "au Orbicius" "au Orbilius" "au Orchius" "au Orcivius" "au Orfidius" "au Orfius" "au Oscius" "au Ostorius" "au Otacilius" "au Ovidius" "au Ovinius" "au Paccius" "au Pacidius" "au Pacilius" "au Paconius" "au Pactumeius" "au Pacuvius" "au Palfurius" "au Palpellius" "au Pantuleius" "au Papinius" "au Papirius" "au Papius" "au Pasidienus" "au Pasidius" "au Passienus" "au Patulcius" "au Pedanius" "au Pedius" "au Peducaeus" "au Peltrasius" "au Percennius" "au Perperna" "au Persius" "au Pescennius" "au Petellius" "au Petillius" "au Petronius" "au Pinarius" "au Pisentius" "au Placidius" "au Plautius" "au Plinius" "au Plotius" "au Pollius" "au Pompeius" "au Pompilius" "au Pomponius" "au Pomptinus" "au Pontidius" "au Pontius" "au Popidius" "au Poppaeus" "au Porcius" "au Portius" "au Postumius" "au Potitius" "au Publicius" "au Pupius" "au Quinctilius" "au Quinctius" "au Quirinius" "au Rabirius" "au Rufius" "au Rufrius" "au Rusonius" "au Rutilius" "au Sabucius" "au Sallustius" "au Salonius" "au Salvius" "au Scribonius" "au Secundinius" "au Secundius" "au Seius" "au Sempronius" "au Sennius" "au Sentius" "au Septimius" "au Sepunius" "au Sergius" "au Sertorius" "au Servilius" "au Sestius" "au Sextilius" "au Sextius" "au Sidonius" "au Silius" "au Sittius" "au Socellius" "au Sornatius" "au Spurius" "au Statius" "au Statilius" "au Stertinius" "au Suedius" "au Sulpicius" "au Tadius" "au Tanicius" "au Tertinius" "au Tettidius" "au Tettienus" "au Tettius" "au Titiedius" "au Titius" "au Titinius" "au Trebatius" "au Trebellius" "au Treblanus" "au Tremellius" "au Tuccius" "au Tullius" "au Turullius" "au Ulpius" "au Umbrius" "au Ummidius" "au Urgulanius" "au Valerius" "au Varius" "au Vatinius" "au Vedius" "au Velius" "au Veranius" "au Verecundius" "au Vergilius" "au Verginius" "au Vesnius" "au Veturius" "au Vibenius" "au Vibidius" "au Vibius" "au Victricius" "au Viducius" "au Vinicius" "au Vipsanius" "au Vipstanus" "au Viridius" "au Virius" "au Visellius" "au Vitellius" "au Vitruvius" "au Volcatius" "au Volumnius" "au Volusenna" "au Volusenus" "au Volusius" "au Vulius"
+				
+			}
+			regnal_first_names_male = {
+				Agrippa Gaius Lucius Marcus Octavius Primus Tiberius Titus
+			}
+			regnal_first_names_female = {
+				Appia Decima Fausta Lucia Numeria Octavia Procula Vopisca
+				
+			}
+			regnal_second_names = {
+				Antonius Aurelius Domitius Fabius Valerius Egnatius
+			}
+		}
+		
+	}
+}

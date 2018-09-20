@@ -1,0 +1,75 @@
+namespace = society_events
+
+#game start code, sets up racial stratocracy
+
+planet_event = {
+	id = society_events.128
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { save_event_target_as = secondary_species }
+		
+		if = { limit = { owner = { has_valid_civic = civic_society_evolution } }
+			while = {
+				count = 4
+				random_tile = {
+					limit = {
+						OR = {
+							has_building = building_mining_network_1
+							has_building = building_hydroponics_farm_1
+						}
+						has_pop = no
+					}
+					create_pop = {
+						species = event_target:secondary_species
+						ethos = random
+					}
+				}
+			}
+		}	
+	}
+}
+
+country_event = {
+	id = society_events.129
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		if = { limit = { has_valid_civic = civic_society_evolution
+						NOT = { has_country_flag = society_initialized_society_1 }
+						has_country_flag = society_society_1
+						}
+
+			every_owned_pop = {
+					set_citizenship_type = {
+						country = root.owner
+						type = citizenship_caste_system_limited
+					}
+					set_military_service_type = {
+					country = root.owner 
+					type = military_service_none 
+					}
+			}
+			owner_species = {
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_full
+				}
+				set_military_service_type = { 
+					country = root.owner 
+					type = military_service_full 
+				}
+				
+			}
+			set_country_flag = society_initialized_society_1
+		}
+	}
+}
+
+
+
+
+

@@ -1,0 +1,71 @@
+society_institute_pscarred_built = {
+	leader_cost = 0.25
+	icon = "gfx/interface/icons/modifiers/mod_leader_cost.dds"
+}
+
+society_overstretched_grey_legions = {
+	planet_unrest_add = 15
+	icon = "gfx/interface/icons/planet_modifiers/pm_unrest.dds"
+}
+
+society_something_wicked = {
+	icon = "gfx/interface/icons/modifiers/mod_planet_unrest_mult.dds"
+}
+
+society_displace_reds = {
+	planet_unrest_add = 5
+	pop_growth_speed = -0.10
+	icon = "gfx/interface/icons/planet_modifiers/pm_unrest.dds"
+}
+
+society_secret_red = {
+	icon = "gfx/interface/icons/modifiers/mod_planet_unrest_mult.dds"
+	pop_ethic_egalitarian_attraction_mult = 0.5
+	#army damage and fire rate	
+}
+
+society_red_rising = {
+	icon = "gfx/interface/icons/modifiers/mod_planet_unrest_mult.dds"
+	pop_government_ethic_attraction = -0.2
+	planet_unrest_add = 10
+}
+
+society_red_risen = {
+	icon = "gfx/interface/icons/modifiers/mod_planet_unrest_mult.dds"
+	pop_government_ethic_attraction = -0.1
+	planet_unrest_add = 5
+}
+
+society_enlightened = {
+	pop_happiness = -0.3
+}
+
+society_unrest_bombing = {
+	planet_unrest_add = 20
+	icon = "gfx/interface/icons/planet_modifiers/pm_unrest.dds"
+}
+
+society_unrest_embarrasment = {
+	icon = "gfx/interface/icons/modifiers/mod_pop_happiness.dds"
+	pop_happiness = -0.1
+}
+
+society_unrest_prison = {
+	planet_unrest_add = 15
+	icon = "gfx/interface/icons/planet_modifiers/pm_unrest.dds"
+}
+
+society_unrest_crash = {
+	country_resource_energy_mult = -0.05
+	icon = "gfx/interface/icons/modifiers/country_resource_energy_mult.dds"
+}
+
+society_unrest_crackdown = {
+	pop_slave_resource_output = -0.05
+	icon = "gfx/interface/icons/modifiers/mod_planet_unrest_mult.dds"
+}
+
+society_unrest_patience = {
+	pop_government_ethic_attraction = -0.25
+	icon = "gfx/interface/icons/modifiers/mod_planet_unrest_mult.dds"
+}

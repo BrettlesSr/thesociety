@@ -1,0 +1,21 @@
+wg_society_rising = {
+	casus_belli = cb_event
+	
+	total_war = yes
+	
+	surrender_acceptance = -1000
+	war_exhaustion = 0.5
+	
+	set_defender_wargoal = wg_society_rising
+
+	potential = {
+		always = no # event only
+	}
+	possible = {
+		always = yes
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}

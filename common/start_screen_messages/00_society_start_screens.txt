@@ -1,0 +1,8 @@
+part = {
+	location = 0
+	localization = "START_SCREEN_SOCIETY"
+	
+	trigger = {
+		has_country_flag = society_society_1
+	}
+}

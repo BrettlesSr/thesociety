@@ -1,0 +1,2237 @@
+namespace = society_events
+
+@tier1influencecontact = 7
+@tier1influencecontactxenophile = 8
+@tier1influencecontactmin = 20
+@tier1influencecontactmax = 80
+
+@tier2influencecontact = 10
+@tier2influencecontactxenophile = 12
+@tier2influencecontactmin = 40
+@tier2influencecontactmax = 100
+
+@tier1materialreward = 6
+@tier1materialmin = 100
+@tier1materialmax = 500
+@tier2materialreward = 12
+@tier2materialmin = 150
+@tier2materialmax = 1000
+@tier3materialreward = 18
+@tier3materialmin = 250
+@tier3materialmax = 1500
+@tier4materialreward = 24
+@tier4materialmin = 350
+@tier4materialmax = 2000
+@tier5materialreward = 48
+@tier5materialmin = 700
+@tier5materialmax = 4000
+
+@tier1influencereward = 6
+@tier1influencemin = 40
+@tier1influencemax = 100
+@tier2influencereward = 12
+@tier2influencemin = 80
+@tier2influencemax = 175
+@tier3influencereward = 18
+@tier3influencemin = 125
+@tier3influencemax = 250
+@tier4influencereward = 24
+@tier4influencemin = 150
+@tier4influencemax = 300
+@tier5influencereward = 36
+@tier5influencemin = 250
+@tier5influencemax = 500
+@tier6influencereward = 48
+@tier6influencemin = 300
+@tier6influencemax = 600
+
+@tier1unityreward = 6
+@tier1unitymin = 100
+@tier1unitymax = 500
+@tier2unityreward = 12
+@tier2unitymin = 150
+@tier2unitymax = 1000
+@tier3unityreward = 18
+@tier3unitymin = 250
+@tier3unitymax = 1500
+@tier4unityreward = 24
+@tier4unitymin = 350
+@tier4unitymax = 2000
+@tier5unityreward = 48
+@tier5unitymin = 700
+@tier5unitymax = 4000
+
+@tier1researchreward = 6
+@tier1researchmin = 60
+@tier1researchmax = 150
+@tier2researchreward = 12
+@tier2researchmin = 90
+@tier2researchmax = 250
+@tier3researchreward = 18
+@tier3researchmin = 120
+@tier3researchmax = 350
+@tier4researchreward = 24
+@tier4researchmin = 150
+@tier4researchmax = 500
+@tier5researchreward = 48
+@tier5researchmin = 300
+@tier5researchmax = 1000
+
+#Institute Questline
+
+country_event = {
+	id = society_events.1
+	hide_window = yes
+	
+	mean_time_to_happen = {
+		months = 6
+		#months = 270
+	}
+	
+	immediate = {
+		if = { limit = {	has_valid_civic = civic_society_evolution
+									has_country_flag = society_society_1
+									OR = {
+										has_ethic = ethic_fanatic_authoritarian
+										has_ethic = ethic_authoritarian
+									}
+						 
+						}
+			if = {
+			limit = {
+				is_ai = yes
+			}
+			country_event = { id = society_events.3 }
+			}
+			if = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = society_events.2 }
+			}
+		}
+		else = {
+			country_event = { id = society_events.43 }
+		}		
+	}
+}
+
+country_event = {
+	id = society_events.2
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = society_events.4 }
+	}
+}
+
+
+country_event = {
+	id = society_events.3
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { limit = { has_valid_civic = civic_society_evolution
+									has_country_flag = society_society_1
+									OR = {
+										has_ethic = ethic_fanatic_authoritarian
+										has_ethic = ethic_authoritarian
+									}
+						
+						}
+			set_country_flag = society_institute_pscarred_built
+			add_modifier = { 
+							modifier = society_institute_pscarred_built
+							days = -1
+							}
+		}
+		else = {
+				country_event = { id = society_events.43 }
+		}
+	}
+}
+
+country_event = {
+	id = society_events.4
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	location = root
+	
+	title = institute.4
+	desc = institute.4.desc
+	picture = GFX_evt_metropolis
+	
+option = {
+		name = "society.4.a"
+		capital_scope = { save_event_target_as = capital_location }
+		enable_special_project = {
+				name = "INSTITUTE_1"
+				location = event_target:capital_location
+				owner = root
+		}
+		
+	}
+option = {
+		name = "society.4.b"
+		add_monthly_resource_mult = {
+			resource = influence
+			value = @tier2influencereward
+			min = @tier2influencemin
+			max = @tier2influencemax
+		}
+	}
+}
+
+country_event = {
+	id = society_events.5
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = institute.5
+	desc = institute.5.desc
+	picture = GFX_evt_medieval_alien_civilization
+	
+	immediate = {
+		set_country_flag = society_institute_pscarred_built
+	}
+
+	option = {
+		name = "society.5.a"
+		custom_tooltip = society.1.a.tooltip
+		
+			add_modifier = { 
+							modifier = society_institute_pscarred_built
+							days = -1
+							}
+		
+	}
+}
+
+country_event = {
+	id = society_events.6
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = {
+			owner = { has_country_flag = society_institute_pscarred_built }
+			has_trait = trait_pscarred_ruler
+			NOR = {
+				has_trait = trait_pscarred_admiral
+				has_trait = trait_pscarred_general
+				has_trait = trait_pscarred_governor
+				has_trait = trait_pscarred_scientist
+			}
+		}
+	}
+
+	immediate = {
+		from = {
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = trait_pscarred_admiral
+				break = yes
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = trait_pscarred_general
+				break = yes
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = trait_pscarred_governor
+				break = yes
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = trait_pscarred_scientist
+				break = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = society_events.7
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_country_flag = society_institute_pscarred_built
+	}
+
+	immediate = {
+		from = {
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = trait_pscarred_admiral
+				add_ruler_trait = trait_pscarred_ruler
+				break = yes
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = trait_pscarred_general
+				add_ruler_trait = trait_pscarred_ruler
+				break = yes
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = trait_pscarred_governor
+				add_ruler_trait = trait_pscarred_ruler
+				break = yes
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = trait_pscarred_scientist
+				add_ruler_trait = trait_pscarred_ruler
+				break = yes
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = trait_pscarred_ruler
+				add_ruler_trait = trait_pscarred_ruler
+				break = yes
+			}
+		}
+	}
+}
+
+#Obsidan Event Chain
+
+country_event = {
+	id = society_events.8
+	hide_window = yes
+	
+	mean_time_to_happen = {
+		months = 6
+		#months = 120
+	}
+	
+	immediate = {
+	if = { limit = { has_valid_civic = civic_society_evolution
+									has_country_flag = society_society_1
+									OR = {
+										has_ethic = ethic_fanatic_authoritarian
+										has_ethic = ethic_authoritarian
+									}
+								
+					}
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			country_event = { id = society_events.10 }
+			
+		}
+		if = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = society_events.9 }
+		}
+	}
+	else = {
+				country_event = { id = society_events.43 }
+		}
+	}
+}
+
+country_event = {
+	id = society_events.9
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = society_events.11 }
+	}
+}
+
+
+country_event = {
+	id = society_events.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { limit = {	NOT = {
+								any_owned_planet = {
+									free_pop_tiles > 1			
+								}
+							}
+						}
+			country_event = {	id = society_events.10 
+								days = 30
+							}
+		}
+		if = { limit = {	any_owned_planet = {
+								free_pop_tiles > 1						
+							}
+						}
+			random_owned_planet = {
+				limit = {
+					count_tile = {
+						count > 1
+						limit = { has_pop = no }
+					}
+				}
+				save_event_target_as = obsidian_planet
+			}
+			create_species = {
+				name = NAME_obsidian_society
+				plural = "NAME_obsidians_society"
+				adjective = "NAME_obsidian_society"
+				class = HUM
+				portrait = human
+				traits = {
+					trait = "trait_pc_continental_preference"
+					trait = "trait_very_strong"
+					trait = "trait_deviants"
+				}
+			}
+			last_created_species = {
+				save_global_event_target_as = obsidian_society
+			}
+			event_target:obsidian_planet = {
+				while = {
+					count = 2
+					best_tile_for_pop = {
+						create_pop = {
+							species = event_target:obsidian_society
+							ethos = {
+								ethic = "ethic_militarist"
+							}
+						}
+					}
+				}
+			}
+			last_created_pop = {
+				set_citizenship_type = {
+						country = root.owner
+						type = citizenship_slavery
+					}
+				set_slavery_type = {
+					country = root.owner 
+					type = slavery_military 
+				}
+			}
+			set_country_flag = society_obsidians_deployed
+			country_event = {	id = society_events.15
+								days = 7800
+								random = 500
+							}
+		}
+	}
+}
+
+country_event = {
+	id = society_events.11
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = obsidian.11
+	desc = obsidian.11.desc
+	picture = GFX_evt_interior_battle
+	
+	option = {
+		name = "society.11.a"
+		capital_scope = { save_event_target_as = capital_location }
+		enable_special_project = {
+				name = "OBSIDIAN_1"
+				location = event_target:capital_location
+				owner = root
+		}
+		every_owned_planet = {
+			add_modifier = { 
+				modifier = society_displace_reds
+				days = 2000
+			}
+		}
+		
+	}
+	option = {
+		name = "society.11.b"
+		capital_scope = { save_event_target_as = capital_location }
+		enable_special_project = {
+			name = "GREY_1"
+			location = event_target:capital_location
+			owner = root
+		}
+		every_owned_planet = {
+			add_modifier = { 
+				modifier = society_displace_reds
+				days = 2000
+			}
+		}
+		
+	}
+	option = {
+		name = "society.11.c"
+		custom_tooltip = society.11.c.tooltip
+		every_owned_planet = {
+			add_modifier = { 
+				modifier = society_overstretched_grey_legions
+				days = 3000
+			}
+		}		
+	}
+}
+
+country_event = {
+	id = society_events.12
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = obsidian.12
+	desc = obsidian.12.desc
+	picture = GFX_evt_victorious_army
+	
+	immediate = {
+		country_event = { id = society_events.10 }
+	}
+
+	option = {
+		name = "society.12.a"
+		custom_tooltip = society.12.a.tooltip
+	}
+}
+
+country_event = {
+	id = society_events.13
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = obsidian.13
+	desc = obsidian.13.desc
+	picture = GFX_evt_colony_settlement
+	
+	immediate = {
+		country_event = { id = society_events.14 }
+	}
+
+	option = {
+		name = "society.13.a"
+		custom_tooltip = society.13.a.tooltip
+	}
+}
+
+country_event = {
+	id = society_events.14
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { limit = { NOT = {
+										any_owned_planet = {
+											free_pop_tiles > 1							
+										}
+									}
+			}
+			country_event = { id = society_events.14 days = 30 }
+		}
+		if = { limit = {	any_owned_planet = {
+									free_pop_tiles > 1							
+								}
+				} 
+			random_owned_planet = {
+				limit = {
+					free_pop_tiles > 1
+				}
+				save_event_target_as = grey_planet
+			}
+			create_species = {
+				name = NAME_grey_society
+				plural = "NAME_greys_society"
+				adjective = "NAME_grey_society"
+				class = HUM
+				portrait = human
+				traits = {
+					trait = "trait_pc_continental_preference"
+					trait = "trait_traditional"
+					trait = "trait_resilient"
+				}
+			}
+			last_created_species = {
+				save_event_target_as = grey_society
+			}
+			event_target:grey_planet = {
+				while = {
+					count = 2
+					best_tile_for_pop = {
+						create_pop = {
+							species = event_target:grey_society
+							ethos = {
+								ethic = "ethic_authoritarian"
+							}
+						}
+					}
+				}
+			}
+			#set rights
+			set_country_flag = society_greys_deployed
+		}
+	}
+}
+
+country_event = {
+	id = society_events.15
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { limit =	{has_valid_civic = civic_society_evolution
+									has_country_flag = society_society_1
+									OR = {
+										has_ethic = ethic_fanatic_authoritarian
+										has_ethic = ethic_authoritarian
+						
+							any_owned_pop = {
+								is_same_species = event_target:obsidian_society 
+								is_enslaved = yes
+							}
+							}
+						}
+			country_event = { id = society_events.16 }
+		}
+	}
+}
+
+country_event = {
+	id = society_events.16
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = obsidian.16
+	desc = obsidian.16.desc
+	picture = GFX_evt_smugglers_in_bar
+
+immediate = {
+	country_event = {	id = society_events.17
+							days = 360
+					}	
+}
+
+option = {
+		name = "society.16.a"
+		add_modifier = { 
+				modifier = society_something_wicked
+				days = 360
+			}
+	}
+}
+
+country_event = {
+	id = society_events.17
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = obsidian.17
+	desc = obsidian.17.desc
+	picture = GFX_evt_ground_combat
+	
+	immediate = {
+	set_country_flag = society_dark_revolt_begun
+	capital_scope = {
+		create_rebels = {
+			name = obsidian_rebels
+			ethos = { ethic = ethic_fanatic_militarist
+						ethic = ethic_authoritarian }
+			authority = root
+			civics = random
+			species = event_target:obsidian_society
+			flag = random
+			effect = {
+				save_event_target_as = obsidian_rebels
+				set_country_flag = society_obsidian_rebels
+				establish_communications_no_message = root.owner
+				root = {
+					owner = {
+						every_relation = {
+							establish_communications_no_message = prevprevprev
+						}
+					}
+				}
+			}
+		}
+	}
+			every_owned_pop = {
+				limit = { is_same_species = event_target:obsidian_rebels }
+				planet = {
+						create_army = {
+							owner = event_target:obsidian_rebels
+							species = event_target:obsidian_society
+							type = "assault_army"
+						}
+						random_list = {
+							30 = {	create_army = {
+										owner = event_target:obsidian_rebels
+										species = event_target:obsidian_society
+										type = "assault_army"
+									}
+							}
+							70 =	{ }
+						}
+						set_planet_flag = society_dark_revolt
+					}
+			}
+	}
+	
+	option = {
+		name = "society.17.a"
+	}
+}
+
+country_event = {
+	id = society_events.18
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = obsidian.18
+	desc = obsidian.18.desc
+	picture = GFX_evt_alien_cavemen
+	
+option = {
+name = "society.18.a"
+custom_tooltip = society.18.a.tooltip
+	hidden_effect = {
+		every_owned_pop = {
+			if = {	limit = { is_same_species = event_target:obsidian_society }
+				wipe_pop_ethos = yes
+				pop_change_ethic = ethic_spiritualist
+			}
+		}
+		every_owned_planet = {
+			modify_species = {
+				species = event_target:obsidian_society
+				remove_trait = trait_deviants
+				add_trait = trait_communal
+			}
+			last_created_species = { save_global_event_target_as = obsidian_society_two }
+			planet_event = { id = society_events.20 }
+		}
+	}
+}
+option = {
+	name = "society.18.b"
+	custom_tooltip = society.18.b.tooltip
+	hidden_effect = {
+		remove_country_flag = society_obsidians_deployed
+		every_owned_pop = {
+			if = {	limit = { is_same_species = event_target:obsidian_society }
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_purge
+				}
+			}
+		}
+	}
+}
+}
+
+#This = destroyed country
+#From = optional, destroyer (country)
+country_event = {
+	id = society_events.19
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {		
+		if = {
+			limit = {
+				exists = {
+					any_country = {
+						limit = {
+							has_country_flag = society_dark_revolt_begun				
+						}
+					}
+				}
+				NOT = {
+					exists = {
+						any_country = {
+							limit = {
+								has_country_flag = society_obsidian_rebels				
+							}
+						}
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					has_country_flag = society_dark_revolt_begun				
+				}
+				country_event = { id = society_events.18 } 
+				remove_country_flag = society_dark_revolt_begun 
+			}		
+		}
+	}
+}
+
+planet_event = {
+	id = society_events.20
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		modify_species = {
+			species = event_target:obsidian_society_two
+			add_trait = trait_nonadaptive
+		}
+	}
+}
+
+#The Rising Event Chain
+
+#Gateway
+country_event = {
+	id = society_events.21
+	hide_window = yes
+	
+	trigger = {
+		has_country_flag = society_society_1
+		has_valid_civic = civic_society_evolution
+		any_owned_pop = {
+			has_trait = trait_society_proles
+			is_enslaved = yes
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 6
+		#months = 600
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			country_event = { id = society_events.22 }
+		}
+		if = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = society_events.23 }
+		}
+	}
+}
+
+country_event = {
+	id = society_events.22
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+						50 = {	country_event = { id = society_events.37 }
+						}
+						50 = { 	country_event = { id = society_events.38 }
+						}
+					}
+	}
+}
+
+
+#Founding the Sons
+
+country_event = {
+	id = society_events.23
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+			country_event = { id = society_events.24 }
+			country_event = { id = society_events.32 days = 7200 }
+	}
+}
+
+country_event = {
+	id = society_events.24
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.24
+	desc = rising.24.desc
+	picture = GFX_evt_society_ares_face
+	
+	immediate = {
+		country_event = { id = society_events.40 days = 1500 }
+		set_country_flag = society_ares_insurrecting_0
+	}
+	
+	option = {
+		name = "society.24.a"
+	}
+}
+
+#Unrest events 1-6
+
+country_event = {
+	id = society_events.25
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.25
+	desc = rising.25.desc
+	picture = GFX_evt_society_ares_face
+		
+	option = {
+		name = "society.25.a"
+		while = {
+				count = 3
+				every_owned_planet = {
+					random_tile = {
+						limit = {
+							exists = pop 
+							pop = {
+								is_enslaved = yes
+								has_trait = trait_society_proles
+							}
+						}
+						kill_pop = yes
+					}
+				}
+		}
+	}
+	option = {
+		name = "society.25.b"
+		while = {
+				count = 3
+				every_owned_planet = {
+					random_tile = {
+						limit = {
+							exists = pop 
+							pop = {
+								is_enslaved = yes
+								has_trait = trait_society_proles
+							}
+						}
+						pop = { add_modifier = { modifier = society_enlightened days = 3600 } }
+					}
+				}
+		}
+	}
+}
+
+country_event = {
+	id = society_events.26
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	show_sound = event_ship_explosion
+	
+	title = rising.26
+	desc = rising.26.desc
+	picture = GFX_evt_burning_settlement
+	
+	
+	option = {
+		name = "society.26.a"
+		every_owned_planet = {
+			add_modifier = { modifier = society_unrest_bombing days = 1800 }
+		}
+	}
+}
+
+country_event = {
+	id = society_events.27
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.27
+	desc = rising.27.desc
+	picture = GFX_evt_pirate_armada
+	#noise
+	
+	option = {
+		name = "society.27.a"
+		add_influence = -50
+		set_country_flag = society_conspiracy_grows
+		custom_tooltip = society.27.a.tooltip
+	}
+	option = {
+		name = "society.27.b"
+		add_modifier = { modifier = society_unrest_embarrasment days = 3600 }
+		custom_tooltip = society.27.b.tooltip
+	}
+}
+
+country_event = {
+	id = society_events.28
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.28
+	desc = rising.28.desc
+	picture = GFX_evt_society_domes
+	
+	option = {
+		name = "society.28.a"
+		every_owned_planet = {
+			add_modifier = { modifier = society_unrest_prison days = 2500 }
+		}
+	}
+	
+}
+
+country_event = {
+	id = society_events.29
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.29
+	desc = rising.29.desc
+	picture = GFX_evt_synth_sabotage
+
+	option = {
+		name = "society.29.b"
+		add_modifier = { modifier = society_unrest_crash days = 1800 }
+	}
+}
+
+country_event = {
+	id = society_events.30
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.30
+	desc = rising.30.desc
+	picture = GFX_evt_smugglers_in_bar
+
+	option = {
+		name = "society.30.a"
+		add_modifier = { modifier = society_unrest_crackdown days = 3600 }
+	}
+	option = {
+		name = "society.30.b"
+		add_modifier = { modifier = society_unrest_patience days = 1000 }
+	}
+}
+
+country_event = {
+	id = society_events.31
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { limit = { has_country_flag = society_society_1 }
+			country_event = { id = society_events.33 }
+		}
+		else = { country_event = { id = society_events.43 }
+		}		
+	}
+}
+
+#Darrow
+
+country_event = {
+	id = society_events.32
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.32
+	desc = {
+		trigger = { has_country_flag = society_institute_pscarred_built }
+		text = rising.32.desc
+	}
+	desc = {
+		trigger = { NOT = { has_country_flag = society_institute_pscarred_built } }
+		text = rising.32.2.desc
+	}
+	picture = {
+		picture = GFX_evt_medieval_alien_civilization
+		trigger = { has_country_flag = society_institute_pscarred_built }
+	}
+	picture = {
+		picture = GFX_evt_throne_room
+		trigger = { NOT = { has_country_flag = society_institute_pscarred_built } }
+	}
+
+	immediate = {		
+		if = { 
+			limit = { 	
+				has_country_flag = society_institute_pscarred_built 
+				has_country_flag = society_society_1
+			}
+			create_leader = {
+				type = general
+				species = owner_main_species
+				name = "NAME_darrow_au_andromedus"
+				skill = 2
+				set_age = 22
+				gender = male
+				traits = {
+					trait = leader_trait_charismatic
+					trait = trait_pscarred_general
+					ruler_trait = leader_trait_reformer
+					ruler_trait = trait_ruler_warlike
+				}
+			}
+			last_created_leader = { 
+				save_global_event_target_as = darrow_au_andromedus
+				set_leader_flag = society_darrow
+			}
+			country_event = { 
+				id = society_events.33 days = 2900 random = 100 
+			}
+		}
+		if = {
+			limit = { 	
+				has_country_flag = { NOT = {society_institute_pscarred_built}}
+				has_country_flag = society_society_1
+			}
+			create_leader = {
+				type = general
+				species = owner_main_species
+				name = "NAME_darrow_au_andromedus"
+				skill = 2
+				set_age = 22
+				gender = male
+				traits = {
+					trait = leader_trait_charismatic
+					ruler_trait = leader_trait_reformer
+					ruler_trait = trait_ruler_warlike
+				}
+			}
+			last_created_leader = { 
+				save_global_event_target_as = darrow_au_andromedus
+				set_leader_flag = society_darrow
+			}
+			country_event = { 
+				id = society_events.33 days = 2900 random = 100
+			}
+		}
+		if = { 
+			limit = { NOT = { has_country_flag = society_society_1}
+			}
+		 	country_event = { 
+				id = society_events.43
+			}
+		}
+	}
+	option = {
+		trigger = { has_country_flag = society_institute_pscarred_built }
+		name = "society.32.a"
+	}
+	
+	option = {
+	trigger = { NOT = { has_country_flag = society_institute_pscarred_built } }
+		name = "society.32.a.2"
+	}
+}
+
+#Death of Darrow
+#Called either as random or by death
+
+country_event = {
+	id = society_events.33
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.33
+	desc = rising.33.desc
+	picture = GFX_evt_space_funeral
+	
+	trigger = {
+		NOR = { event_target:darrow_au_andromedus = { leader_class = ruler } 
+				event_target:darrow_au_andromedus = { has_leader_flag = society_became_soveriegn } }
+	}
+	
+	immediate = {
+		if = {
+				limit = {
+					NOT = { event_target:darrow_au_andromedus = { leader_class = ruler } }
+					NOT = { event_target:darrow_au_andromedus = { has_leader_flag = society_became_soveriegn } }
+				}	
+		set_country_flag = society_darrow_died
+		event_target:darrow_au_andromedus = { kill_leader = { type = general } }
+		country_event = { id = society_events.34 days = 180 }
+		}
+	}
+	
+	option = {
+		name = "society.33.a"
+	}
+}
+
+#Reveal
+
+country_event = {
+	id = society_events.34
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.34
+	desc = rising.34.desc
+	picture = GFX_evt_cybernetics
+
+	immediate = {
+		if = { limit =	{	has_valid_civic = civic_society_evolution
+							has_country_flag = society_society_1
+							any_owned_pop = {
+								has_trait = trait_society_proles
+								is_enslaved = yes
+							}
+						}
+			country_event = { id = society_events.35 days = 500 }
+		}
+	}
+
+	option = {
+		name = "society.34.a"
+		add_modifier = { 
+				modifier = society_secret_red
+				days = -1
+			}
+	}
+}
+
+#Phobos Address
+
+country_event = {
+	id = society_events.35
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.35
+	desc = rising.35.desc
+	picture = GFX_evt_society_phobos_address
+
+	immediate = {
+		country_event = { id = society_events.36 days = 15 }
+	}
+
+	option = {
+		name = "society.35.a"
+	}
+}
+
+#Open War
+
+country_event = {
+	id = society_events.36
+	hide_window = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = default
+		num_owned_planets > 2
+		NOR = { has_country_flag = no_machine_uprising
+				has_country_flag = society_no_rising
+		}
+		
+			has_valid_civic = civic_society_evolution
+							has_country_flag = society_society_1
+							any_owned_pop = {
+								has_trait = trait_society_proles
+								is_enslaved = yes
+							}
+		
+	}
+
+	immediate = {
+		set_country_flag = no_machine_uprising
+		set_country_flag = society_no_rising
+		if = {
+			limit = { 
+				any_owned_planet = {
+					any_owned_pop = {
+						has_trait = trait_society_proles
+						is_enslaved = yes
+					}
+					is_capital = no
+					exists = sector
+					sector = {
+						is_core_sector = no
+					}
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					any_owned_pop = {
+						has_trait = trait_society_proles
+						is_enslaved = yes
+					}
+					is_capital = no
+					exists = sector
+					sector = {
+						is_core_sector = no
+					}
+				}
+				planet_event = { id = society_events.361 }
+			}
+		}
+			else = {
+				if = {
+					limit = {
+						any_owned_planet = {
+							any_owned_pop = {
+								has_trait = trait_society_proles
+								is_enslaved = yes
+							}
+							is_capital = no
+						}
+					}
+					random_owned_planet = {
+						limit = {
+							any_owned_pop = {
+								has_trait = trait_society_proles
+								is_enslaved = yes
+							}
+							is_capital = no
+						}
+						planet_event = { id = society_events.361 }
+					}
+				}
+					else = { # random sector
+						if = {
+							limit = {
+								any_owned_planet = {
+									is_capital = no
+									exists = sector
+									sector = {
+										is_core_sector = no
+									}
+								}
+							}
+							random_owned_planet = {
+								limit = {
+									is_capital = no
+									exists = sector
+									sector = {
+										is_core_sector = no
+									}
+								}
+								planet_event = { id = society_events.361 }
+							}
+						}
+							else = { # random core
+								random_owned_planet = {
+									limit = {
+										is_capital = no
+									}
+									planet_event = { id = society_events.361 }
+								}
+							}
+						
+					}
+				
+			}
+		
+	}
+}
+
+planet_event = { #rising
+	id = society_events.361
+	title = rising.36
+	picture = GFX_evt_ground_combat
+	show_sound = event_ground_battle
+	is_triggered_only = yes
+	
+	desc = {
+		trigger = { owner = {has_country_flag = society_obsidians_deployed }}
+		text = rising.36.desc
+	}
+	desc = {
+		trigger = { NOT = { owner = { has_country_flag = society_obsidians_deployed }}}
+		text = rising.36.2.desc
+	}
+	
+	trigger = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		exists = owner
+	}
+
+	option = {
+		name = "society.36.a"
+		custom_tooltip = society.36.a.tooltip
+		#stay
+	}
+	option = {
+		name = "society.36.b"
+		custom_tooltip = society.36.b.tooltip
+		hidden_effect = {
+			event_target:society_the_rising = {
+				set_player = event_target:society_the_rising_originator
+			}
+		}
+	}
+
+	immediate = {
+		owner = { save_event_target_as = society_the_rising_originator }
+		set_planet_flag = society_rising_capital@root.owner
+		# event lock all fleets to prevent exploits
+		owner = { every_owned_fleet = { set_event_locked = yes } }
+		# find and flag planets
+		owner = {
+			effect_on_blob = {
+				center = root.solar_system
+				owned_planets_percentage = 0.5
+				planet_limit = {
+					OR = {
+						controller = { is_same_value = root.owner }
+						solar_system = {
+							exists = starbase
+							starbase = { owner = { is_same_value = root.owner } }
+						}
+					}
+					solar_system = { # never flip any planets in the capital system
+						NOT = { any_planet = { is_same_value = root.owner.capital_scope } }
+					}
+				}
+				effect = {
+					set_star_flag = society_rising_system_flip
+				}
+			}
+		}
+		# create rising species
+		create_species = {
+			class = "HUM"
+			portrait = "human"
+			name = "PRESCRIPTED_species_name_society"
+			plural = "PRESCRIPTED_species_plural_society"
+			species_bio = "The Aureates are descended from the lunar colonists who resented the shackles and obligations of their governments and shareholders back on Earth. They fought and won a war of extermination against them, establishing a Society based on slavery across the solar system. They then further consolidated their rule through surgical and genetic enhancements to themselves and to their slaves."
+			name_list = "HUMAN1"
+			traits = {
+				trait = "trait_decadent"
+				trait = "trait_wasteful"
+				trait = "trait_talented"
+				trait = "trait_very_strong"
+			}
+		}
+		# create rising country
+				owner = {
+					create_country = {
+						name = "Solar Republic"
+						type = default
+						species = last_created_species
+						ignore_initial_colony_error = yes
+						day_zero_contact = no
+						ethos = { ethic = ethic_fanatic_egalitarian
+									ethic = ethic_militarist }
+						authority = auth_democratic
+						civics = { civic = "civic_idealistic_foundation" civic = "civic_parliamentary_system" }
+						flag = {
+							icon={
+								category="ornate"
+								file="flag_ornate_5.dds"
+							}
+							background={
+								category="backgrounds"
+								file="00_solid.dds"
+							}
+							colors={
+								"dark_blue"
+								"dark_green"
+								"null"
+								"null"
+							}
+						}
+						effect = {
+							save_event_target_as = society_current_rising
+							country_event = { id = society_events.362 }
+							create_leader = { 
+								type = ruler
+								species = root.owner_species
+								name = "NAME_mustang_leader"
+								skill = 3
+								set_age = 22
+								gender = female
+								traits = {
+									trait = trait_ruler_deep_connections
+									trait = leader_trait_reformer
+								}
+							}
+							assign_leader = last_created_leader
+						}
+				}
+
+	}
+	}
+	after = {
+		hidden_effect = {
+			event_target:society_current_rising_originator = {
+				every_owned_fleet = {
+					set_event_locked = no
+				}
+			}
+		}
+	}
+}
+
+
+country_event = {
+	id = society_events.362
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# saving uprising and host as event targets
+		save_event_target_as = society_current_rising
+		from.owner = { save_event_target_as = society_current_rising_originator }
+
+		# setting flags
+		set_country_flag = society_rising_country@from.owner
+		set_country_flag = society_rising_country
+		set_country_flag = society_republic_1
+		set_relation_flag = {
+			who = event_target:society_current_rising_originator
+			flag = society_rising_to_host_flag
+		}
+		from.owner = {
+			set_country_flag = society_rising_originator@root
+			set_country_flag = society_rising_originator
+			add_modifier = { 
+				modifier = society_red_risen
+				days = 5000
+			}
+			set_relation_flag = {
+				who = root
+				flag = society_rising_to_host_flag
+			}
+		}
+		add_modifier = { 
+				modifier = society_red_risen
+				days = 5000
+			}
+
+		# setting graphical culture
+		set_graphical_culture = event_target:society_current_rising_originator
+
+		# establish comms
+		every_country = {
+			limit = { has_communications = event_target:society_current_rising_originator }
+			establish_communications_no_message = root
+			establish_contact = { who = root location = from }
+		}
+
+		# baseline resource stockpile
+		add_energy = 15000
+		add_minerals = 3000
+		add_influence = 500
+		add_100_unity_per_year_passed = yes # scripted effect
+
+		# clear new contact opinion modifier
+		if = {
+			limit = {
+				has_opinion_modifier = {
+					who = event_target:society_current_rising_originator
+					modifier = opinion_new_contact
+				}
+			}
+			remove_opinion_modifier = {
+				who = event_target:society_current_rising_originator
+				modifier = opinion_new_contact
+			}
+		}
+
+		from = {
+			# flip military stations
+			solar_system = {
+				every_fleet_in_system = {
+					limit = {
+						exists = owner
+						owner = { is_same_value = event_target:society_current_rising_originator }
+						any_owned_ship = { is_ship_class = shipclass_military_station }
+					}
+					set_owner = root
+				}
+			}
+			set_owner = root
+			set_controller = root
+			set_capital = yes
+
+			solar_system = {
+				if = {
+					limit = {
+						exists = starbase
+					}
+					starbase = { set_owner = root }
+				}
+					else = {
+						create_starbase = {
+							size = starbase_starport
+							module = shipyard
+							owner = root
+						}
+					}
+				
+			}
+
+			# create armies
+			if = {
+				limit = { root = { has_country_flag = society_obsidians_deployed } }
+				while = {
+					count = 6
+					create_army = {
+						owner = root
+						type = "assault_army"
+					}
+				}
+			}
+				else = {
+					# regular armies
+					while = {
+						count = 4
+						create_army = {
+							owner = root
+							type = "assault_army"
+						}
+					}
+				}
+			
+
+			# flip remaining flagged planets
+			while = {
+				count = 100
+				limit = {
+					any_system = {
+						has_star_flag = society_rising_system_flip
+						exists = starbase
+						starbase = {
+							owner = { is_same_value = event_target:society_current_rising_originator }
+						}
+					}
+				}
+				random_system = {
+					limit = {
+						has_star_flag = society_rising_system_flip
+						exists = starbase
+						starbase = {
+							owner = { is_same_value = event_target:society_current_rising_originator }
+						}
+					}
+					starbase = { set_owner = root }
+				}
+			}
+			event_target:society_current_rising_originator = {
+				every_owned_planet = {
+					limit = {
+						solar_system = {
+							has_star_flag = society_rising_system_flip
+						}
+					}
+
+					# flip military stations
+					solar_system = {
+						every_fleet_in_system = {
+							limit = {
+								exists = owner
+								owner = { is_same_value = event_target:society_current_rising_originator }
+								any_owned_ship = { is_ship_class = shipclass_military_station }
+							}
+							set_owner = root
+						}
+					}
+
+					set_planet_flag = been_flipped
+					set_owner = root
+					set_controller = root
+
+					
+			# create armies
+			if = {
+				limit = { event_target:society_current_rising_originator = { has_country_flag = society_obsidians_deployed } }
+				while = {
+					count = 6
+					create_army = {
+						owner = root
+						type = "assault_army"
+					}
+				}
+			}
+				else = {
+					# regular armies
+					while = {
+						count = 4
+						create_army = {
+							owner = root
+							type = "assault_army"
+						}
+					}
+				}
+			
+				}
+			}
+		}
+
+		# get host's technologies
+		copy_techs_from = {
+			target = event_target:society_current_rising_originator
+			except = {
+				tech_subdermal_stimulation
+				tech_galactic_benevolence
+				tech_neural_implants
+				tech_selected_lineages
+				tech_capacity_boosters
+				tech_akx_worm_1
+				tech_akx_worm_2
+				tech_akx_worm_3
+			}
+		}
+
+		# survey host's surveyed planets
+		every_planet = {
+			limit = {
+				is_surveyed = {
+					who = event_target:society_current_rising_originator
+					status = yes
+				}
+			}
+			surveyed = {
+				set_surveyed = yes
+				surveyor = root
+			}
+		}
+
+		# declare war on host
+		declare_war = {
+			target = event_target:society_current_rising_originator
+			name = "NAME_Society_The_Rising_War"
+			attacker_war_goal = "wg_society_rising"
+		}
+
+		# add modifier for AI
+		if = {
+			limit = { is_ai = yes }
+			add_modifier = {
+				modifier = uprising_ai_buff
+				days = 1800
+			}
+		}
+
+		# create fleets
+		if = {
+			limit = { event_target:society_current_rising_originator = { has_country_flag = society_conspiracy_grows } }
+			
+			# conspiracy fleets, 100% naval cap
+			
+			create_fleet_from_naval_cap = 0.1
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+
+			create_fleet_from_naval_cap = 0.2
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+
+			create_fleet_from_naval_cap = 0.3
+			random_owned_planet = {
+				last_created_fleet = {
+					set_location = prev
+				}
+			}
+
+			create_fleet_from_naval_cap = 0.4
+			#capital_scope = {
+				last_created_fleet = {
+					set_location = root.capital_scope
+				}
+			#}
+		}
+			# regular fleets, 60% naval cap
+			else = {
+				create_fleet_from_naval_cap = 0.1
+				random_owned_planet = {
+					last_created_fleet = {
+						set_location = prev
+					}
+				}
+
+				create_fleet_from_naval_cap = 0.2
+				random_owned_planet = {
+					last_created_fleet = {
+						set_location = prev
+					}
+				}
+
+				create_fleet_from_naval_cap = 0.3
+				random_owned_planet = {
+					last_created_fleet = {
+						set_location = prev
+					}
+				}
+			}
+		
+
+		#science
+		create_fleet = {
+			effect = {
+				set_owner = root
+
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+
+				set_fleet_stance = evasive				
+				set_location = root.capital_scope
+				
+				owner = {
+					create_leader = {
+						type = scientist
+						sub_type = survey
+						name = random
+						species = owner_main_species
+					}
+				}
+				set_leader = last_created_leader
+			}			
+		}
+			
+		#constructor
+		create_fleet = {
+			effect = {
+				set_owner = root
+				
+				create_ship = {
+					name = random
+					random_existing_design = constructor
+				}
+				
+				set_fleet_stance = evasive
+				set_location = root.capital_scope
+			}
+		}
+
+		every_owned_fleet = {
+			#limit = { event_locked = yes }
+			set_event_locked = no
+		}
+	}
+}
+
+#War ends -Republic victory
+#This = destroyed country
+#From = optional, destroyer (country)
+
+country_event = {
+	id = society_events.37
+	hide_window = yes
+	fire_only_once = no
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_flag = society_society_1
+	}
+
+	immediate = {
+	if = { limit = { any_country = { has_country_flag = society_society_1
+									has_country_flag = society_rising_originator  }
+					}
+		random_country = { limit = { has_country_flag = society_society_1
+									has_country_flag = society_rising_originator }
+			remove_country_flag = society_rising_originator
+			country_event = { id = society_events.371 }
+		}
+	}
+	}
+}
+
+country_event = {
+	id = society_events.371
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.37
+	desc = rising.37.desc
+	picture = GFX_evt_victorious_army
+	
+	trigger = {
+		has_country_flag = society_republic_1
+	}
+
+	immediate = {
+		remove_modifier = society_red_rising
+		add_modifier = {
+				modifier = society_red_risen
+				days = 1800
+		}
+	}
+
+	option = {
+		name = "society.37.a"
+	}
+}
+
+#War ends -Society victory
+#This = destroyed country
+#From = optional, destroyer (country)
+
+country_event = {
+	id = society_events.38
+	hide_window = yes
+	fire_only_once = no
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_flag = society_republic_1
+	}
+
+	immediate = {
+	if = { limit = { any_country = { has_country_flag = society_republic_1
+									has_country_flag = society_rising_country }
+					}
+		random_country = { limit = { has_country_flag = society_republic_1	
+									has_country_flag = society_rising_country 
+								}
+			remove_country_flag = society_rising_country
+			country_event = { id = society_events.381 }
+		}
+	}
+	}
+}
+
+country_event = {
+	id = society_events.381
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.38
+	desc = rising.38.desc
+	picture = GFX_evt_victorious_army
+	
+	trigger = {
+		has_country_flag = society_society_1
+	}
+
+	immediate = {
+			remove_modifier = society_red_rising
+		add_modifier = { 
+				modifier = society_red_risen
+				days = 1800
+			}
+	}
+
+	option = {
+		name = "society.38.a"
+	}
+}
+
+#On Darrow as Soveriegn
+
+country_event = {
+	id = society_events.39
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.39
+	desc = {
+		trigger = { has_country_flag = society_institute_pscarred_built }
+		text = rising.39.desc
+	}
+	desc = {
+		trigger = { NOT = { has_country_flag = society_institute_pscarred_built } }
+		text = rising.39.2.desc
+	}
+	picture = GFX_evt_galactic_senate
+
+	option = {
+		name = "society.39.a"
+		hidden_effect = {
+			country_event = { id = society_events.46 }
+		}
+	}
+
+	option = {
+		name = "society.39.b"
+		trigger = {has_valid_civic = civic_society_evolution
+									has_country_flag = society_society_1
+									OR = {
+										has_ethic = ethic_fanatic_authoritarian
+										has_ethic = ethic_authoritarian
+									}
+	
+		}
+		shift_ethic = "ethic_fanatic_egalitarian"
+		shift_ethic = "ethic_fanatic_egalitarian"
+		change_government = {
+			authority = auth_democratic
+			civics = {
+				civic = civic_idealistic_foundation
+				civic = civic_parliamentary_system
+			}
+		}
+		create_leader = {
+								type = ruler
+								species = root.owner_species
+								name = "NAME_mustang_leader"
+								skill = 3
+								set_age = 22
+								gender = female
+								traits = {
+									trait = trait_ruler_deep_connections
+									trait = leader_trait_reformer
+								}
+							}
+							assign_leader = last_created_leader
+		
+	}
+}
+
+country_event = {
+	id = society_events.40
+	hide_window = yes
+	fire_only_once = no
+	is_triggered_only = yes
+	
+immediate = {
+
+	if = { limit =	{	has_country_flag = society_ares_insurrecting_0
+					}
+			random_list = {
+				10 = {
+						country_event = { id = society_events.25 }
+						country_event = {	id = society_events.40 days = 1500 random = 300 }
+					}
+				10 = {
+						country_event = { id = society_events.26 }
+						country_event = {	id = society_events.40 days = 1500 random = 300 }
+					}
+				10 = {
+						country_event = { id = society_events.27 }
+						country_event = {	id = society_events.40 days = 1500 random = 300 }
+					}
+				10 = {
+						country_event = { id = society_events.28 }
+						country_event = {	id = society_events.40 days = 1500 random = 300 }
+					}
+				10 = {
+						country_event = { id = society_events.29 }
+						country_event = {	id = society_events.40 days = 1500 random = 300 }
+					}
+				10 = {
+						country_event = { id = society_events.30 }
+						country_event = {	id = society_events.40 days = 1500 random = 300 }
+					}
+			}
+	}
+}
+}
+
+country_event = {
+	id = society_events.41
+	hide_window = no
+	fire_only_once = no
+	is_triggered_only = yes
+	
+	title = rising.41
+	desc = rising.41.desc
+	picture = GFX_evt_galactic_senate
+		
+	immediate = {
+		if = { limit = { has_country_flag = society_society_1 
+						NOR = {	has_ethic = ethic_authoritarian
+								has_ethic = ethic_fanatic_authoritarian
+						}
+			}
+			remove_country_flag = society_1
+			remove_modifier = society_institute_pscarred_built
+			remove_modifier = society_something_wicked
+			remove_country_flag = society_ares_insurrecting_0
+			remove_country_flag = society_institute_pscarred_built
+			remove_country_flag = society_obsidians_deployed
+			remove_country_flag = society_greys_deployed
+			remove_country_flag = society_conspiracy_grows
+			#remove_civic = civic_society_evolution
+			every_owned_planet = {
+				#remove_planet_flag = 
+			}
+			every_owned_pop = {
+				modify_species = {
+					species = this
+					remove_trait = trait_society_proles
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "society.41.a"
+	}
+}
+
+country_event = {
+	id = society_events.42
+	hide_window = yes
+	fire_only_once = no
+	is_triggered_only = yes
+		
+	immediate = {
+		if = { limit =	{	has_country_flag = society_society_1 
+							NOT = { has_country_flag = society_darrow_died }
+							from = { has_leader_flag = society_darrow }
+			}
+			country_event = { id = society_events.33 }
+			
+		}
+}
+}
+
+event = {
+	id = society_events.43
+	hide_window = yes
+	fire_only_once = no
+	is_triggered_only = yes
+	
+	trigger = {
+		any_country = {
+			has_country_flag = society_society_1 
+			NOR = {	has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_country_flag = society_society_1 
+				NOR = {	has_ethic = ethic_authoritarian
+						has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+			country_event = { id = society_events.41 }
+		}
+	}
+}
+
+# Triggers country_event for the defender upon victory
+# Root = country, planet owner
+# From = country, attack leader
+# FromFrom = planet
+country_event = {
+	id = society_events.44
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { limit = { root = { has_country_flag = society_dark_revolt_begun } 
+						fromfrom = { has_planet_flag = society_dark_revolt }
+				}
+			fromfrom = { remove_planet_flag = society_dark_revolt }
+			root = {
+			if = { limit =	{ NOT = {
+								any_owned_planet = {
+									has_planet_flag = society_dark_revolt
+								}
+							}
+					}
+			country_event = { id = society_events.18 } 
+			remove_country_flag = society_dark_revolt_begun 
+			}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = society_events.45
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		ruler = { has_leader_flag = society_darrow }
+	}
+	
+	immediate = {
+		country_event = { id = society_events.39 days = 200 }
+		event_target:darrow_au_andromedus = { set_leader_flag = society_became_soveriegn }
+		ruler = {
+		}
+	}
+}
+
+country_event = {
+	id = society_events.46
+	hide_window = no
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	title = rising.46
+	desc = rising.46.desc
+	picture = GFX_evt_space_funeral
+
+	option = {
+		name = "society.46.b"
+		hidden_effect = {
+			country_event = { id = society_events.34 days = 180 }
+		}
+	}
+}
+
+country_event = {
+	id = society_events.47
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = {
+			owner = { has_country_flag = society_institute_pscarred_built }
+			NOT = { has_trait = trait_pscarred_ruler }
+			OR = {
+				has_trait = trait_pscarred_admiral
+				has_trait = trait_pscarred_general
+				has_trait = trait_pscarred_governor
+				has_trait = trait_pscarred_scientist
+			}
+		}
+	}
+
+	immediate = {
+		from = {
+			if = {
+				limit = { has_trait = trait_pscarred_admiral }
+				remove_trait = trait_pscarred_admiral
+				break = yes
+			}
+			if = {
+				limit = { has_trait = trait_pscarred_general }
+				remove_trait = trait_pscarred_general
+				break = yes
+			}
+			if = {
+				limit = { has_trait = trait_pscarred_governor }
+				remove_trait = trait_pscarred_governor
+				break = yes
+			}
+			if = {
+				limit = { has_trait = trait_pscarred_scientist }
+				remove_trait = trait_pscarred_scientist
+				break = yes
+			}
+		}
+	}
+}

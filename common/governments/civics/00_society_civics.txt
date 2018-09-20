@@ -1,0 +1,47 @@
+civic_society_evolution = {
+	icon = "gfx/interface/icons/governments/civics/civic_racial_stratocracy.dds"
+	modification = no
+	playable = { host_has_dlc = "Utopia" }
+	potential = { ethics = {NOT = { value = ethic_gestalt_consciousness } 
+							OR = {
+									value = ethic_fanatic_authoritarian
+									value = ethic_authoritarian
+								}
+							}
+				}
+	pickable_at_start = no
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_mechanists
+				value = civic_fanatic_purifiers
+				value = civic_agrarian_idyll
+				value = civic_post_apocalyptic
+				value = civic_life_seeded
+				value = civic_syncretic_evolution
+			}
+		}
+	}
+	random_weight = {
+		base = 0 # Should be fairly rare
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Utopia" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+
+	description = civic_tooltip_society_evolution_effects
+	has_secondary_species = {	# see game_start.11
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			trait = trait_society_proles
+			trait = trait_industrious
+			trait = trait_fleeting
+		}
+	}
+}

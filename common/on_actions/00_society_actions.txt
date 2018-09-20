@@ -1,0 +1,73 @@
+#triggers initialisation for racial stratocracy
+empire_init_create_capital_secondary_pops = {
+	events = {
+		society_events.128
+	}
+}
+
+#triggers faction quests for the society
+on_game_start_country = {
+	events = {
+		society_events.129
+	}
+}
+
+on_ruler_back_to_pre_ruler_class = {
+	events = {
+		society_events.6
+	}
+}
+
+# scope: country, from: leader
+# adds peerless scars
+on_leader_spawned = {
+	events = {
+		#society_events.7
+	}
+	random_events = {
+		50 = society_events.7
+		50 = 0
+	}
+}
+
+# Triggers country_event for the defender upon victory
+# Root = country, planet owner
+# From = country, attack leader
+# FromFrom = planet
+on_planet_defenders_win = {
+	events = {
+		society_events.44
+	}
+}
+
+# Executed as a leader has died
+# This = Country
+# From = Leader
+on_leader_death = {
+	events = {
+		society_events.42
+	}
+}
+
+#This = destroyed country
+#From = optional, destroyer (country)
+on_country_destroyed = {
+	events = {
+		society_events.37
+		society_events.38
+		society_events.19
+	}
+}
+
+on_monthly_pulse = {
+	events = {
+		society_events.43
+	}
+}
+
+on_ruler_set = {
+	events = {
+		society_events.45
+		society_events.47
+	}
+}
