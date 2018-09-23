@@ -747,23 +747,15 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	
-	immediate = {		
+	immediate = {	
 		if = {
 			limit = {
-				exists = {
-					any_country = {
-						limit = {
-							has_country_flag = society_dark_revolt_begun				
-						}
-					}
+				any_country = {						
+					has_country_flag = society_dark_revolt_begun						
 				}
 				NOT = {
-					exists = {
-						any_country = {
-							limit = {
-								has_country_flag = society_obsidian_rebels				
-							}
-						}
+					any_country = {
+						has_country_flag = society_obsidian_rebels				
 					}
 				}
 			}
@@ -853,7 +845,8 @@ country_event = {
 	
 	immediate = {
 			country_event = { id = society_events.24 }
-			country_event = { id = society_events.32 days = 7200 }
+			#country_event = { id = society_events.32 days = 7200 }
+			country_event = { id = society_events.32 days = 72 }
 	}
 }
 
@@ -918,6 +911,9 @@ country_event = {
 							pop = {
 								is_enslaved = yes
 								has_trait = trait_society_proles
+								NOT = {
+									has_modifier = society_enlightened
+								}
 							}
 						}
 						pop = { add_modifier = { modifier = society_enlightened days = 3600 } }
@@ -1067,9 +1063,9 @@ country_event = {
 		trigger = { NOT = { has_country_flag = society_institute_pscarred_built } }
 	}
 
-	immediate = {		
-		if = { 
-			limit = { 	
+	immediate = {	
+		if = {
+			limit = {
 				has_country_flag = society_institute_pscarred_built 
 				has_country_flag = society_society_1
 			}
@@ -1083,8 +1079,6 @@ country_event = {
 				traits = {
 					trait = leader_trait_charismatic
 					trait = trait_pscarred_general
-					ruler_trait = leader_trait_reformer
-					ruler_trait = trait_ruler_warlike
 				}
 			}
 			last_created_leader = { 
@@ -1097,7 +1091,7 @@ country_event = {
 		}
 		if = {
 			limit = { 	
-				has_country_flag = { NOT = {society_institute_pscarred_built}}
+				NOT = { has_country_flag = society_institute_pscarred_built }
 				has_country_flag = society_society_1
 			}
 			create_leader = {
@@ -1109,8 +1103,6 @@ country_event = {
 				gender = male
 				traits = {
 					trait = leader_trait_charismatic
-					ruler_trait = leader_trait_reformer
-					ruler_trait = trait_ruler_warlike
 				}
 			}
 			last_created_leader = { 
@@ -1121,7 +1113,7 @@ country_event = {
 				id = society_events.33 days = 2900 random = 100
 			}
 		}
-		if = { 
+		if = {
 			limit = { NOT = { has_country_flag = society_society_1}
 			}
 		 	country_event = { 
@@ -1240,7 +1232,7 @@ country_event = {
 	trigger = {
 		is_country_type = default
 		num_owned_planets > 2
-		NOR = { has_country_flag = no_machine_uprising
+		NOR = { 
 				has_country_flag = society_no_rising
 		}
 		
@@ -2167,9 +2159,12 @@ country_event = {
 	}
 	
 	immediate = {
-		country_event = { id = society_events.39 days = 200 }
-		event_target:darrow_au_andromedus = { set_leader_flag = society_became_soveriegn }
-		ruler = {
+		country_event = { id = society_events.39 days = 350 }
+		ruler = { 
+			set_leader_flag = society_became_soveriegn
+			remove_trait = leader_trait_charismatic					
+			add_ruler_trait = leader_trait_reformer
+			add_ruler_trait = trait_ruler_warlike
 		}
 	}
 }
@@ -2198,8 +2193,8 @@ country_event = {
 	hide_window = yes
 
 	trigger = {
-		from = {
-			owner = { has_country_flag = society_institute_pscarred_built }
+		has_country_flag = society_institute_pscarred_built
+		ruler = {			
 			NOT = { has_trait = trait_pscarred_ruler }
 			OR = {
 				has_trait = trait_pscarred_admiral
@@ -2211,7 +2206,7 @@ country_event = {
 	}
 
 	immediate = {
-		from = {
+		ruler = {
 			if = {
 				limit = { has_trait = trait_pscarred_admiral }
 				remove_trait = trait_pscarred_admiral

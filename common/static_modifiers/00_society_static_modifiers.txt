@@ -20,8 +20,10 @@ society_displace_reds = {
 
 society_secret_red = {
 	icon = "gfx/interface/icons/modifiers/mod_planet_unrest_mult.dds"
-	pop_ethic_egalitarian_attraction_mult = 0.5
-	#army damage and fire rate	
+	pop_ethic_egalitarian_attraction_mult = 0.3
+	army_damage_mult = -0.05
+	ship_fire_rate_mult = 0.05
+
 }
 
 society_red_rising = {
