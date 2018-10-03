@@ -283,7 +283,6 @@ country_event = {
 			if = {
 				limit = { leader_class = governor }
 				add_trait = trait_pscarred_governor
-				add_ruler_trait = trait_pscarred_ruler
 				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
