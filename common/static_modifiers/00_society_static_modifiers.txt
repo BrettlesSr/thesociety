@@ -39,7 +39,7 @@ society_red_risen = {
 }
 
 society_enlightened = {
-	pop_happiness = -0.3
+	pop_happiness = -0.25
 }
 
 society_unrest_bombing = {

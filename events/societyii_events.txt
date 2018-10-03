@@ -84,8 +84,8 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 6
-		#months = 270
+		#months = 6
+		months = 270
 	}
 	
 	immediate = {
@@ -271,30 +271,31 @@ country_event = {
 			if = {
 				limit = { leader_class = admiral }
 				add_trait = trait_pscarred_admiral
-				add_ruler_trait = trait_pscarred_ruler
+				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = general }
 				add_trait = trait_pscarred_general
-				add_ruler_trait = trait_pscarred_ruler
+				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = governor }
 				add_trait = trait_pscarred_governor
 				add_ruler_trait = trait_pscarred_ruler
+				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = scientist }
 				add_trait = trait_pscarred_scientist
-				add_ruler_trait = trait_pscarred_ruler
+				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = ruler }
-				add_trait = trait_pscarred_ruler
+				#add_trait = trait_pscarred_ruler
 				add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
@@ -309,8 +310,8 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 6
-		#months = 120
+		#months = 6
+		months = 120
 	}
 	
 	immediate = {
@@ -674,13 +675,13 @@ country_event = {
 							type = "assault_army"
 						}
 						random_list = {
-							30 = {	create_army = {
+							20 = {	create_army = {
 										owner = event_target:obsidian_rebels
 										species = event_target:obsidian_society
 										type = "assault_army"
 									}
 							}
-							70 =	{ }
+							80 =	{ }
 						}
 						set_planet_flag = society_dark_revolt
 					}
@@ -800,8 +801,8 @@ country_event = {
 	}
 		
 	mean_time_to_happen = {
-		months = 6
-		#months = 600
+		#months = 6
+		months = 600
 	}
 	
 	immediate = {
@@ -845,8 +846,8 @@ country_event = {
 	
 	immediate = {
 			country_event = { id = society_events.24 }
-			#country_event = { id = society_events.32 days = 7200 }
-			country_event = { id = society_events.32 days = 72 }
+			country_event = { id = society_events.32 days = 7200 }
+			#country_event = { id = society_events.32 days = 72 }
 	}
 }
 
@@ -881,6 +882,7 @@ country_event = {
 	title = rising.25
 	desc = rising.25.desc
 	picture = GFX_evt_society_ares_face
+	show_sound = event_public_unrest
 		
 	option = {
 		name = "society.25.a"
@@ -952,7 +954,7 @@ country_event = {
 	title = rising.27
 	desc = rising.27.desc
 	picture = GFX_evt_pirate_armada
-	#noise
+	show_sound = event_public_unrest
 	
 	option = {
 		name = "society.27.a"
@@ -976,6 +978,7 @@ country_event = {
 	title = rising.28
 	desc = rising.28.desc
 	picture = GFX_evt_society_domes
+	show_sound = event_air_raid_siren
 	
 	option = {
 		name = "society.28.a"
@@ -1011,6 +1014,7 @@ country_event = {
 	title = rising.30
 	desc = rising.30.desc
 	picture = GFX_evt_smugglers_in_bar
+	show_sound = event_public_unrest
 
 	option = {
 		name = "society.30.a"
@@ -1353,11 +1357,6 @@ planet_event = { #rising
 		text = rising.36.2.desc
 	}
 	
-	trigger = {
-		host_has_dlc = "Synthetic Dawn Story Pack"
-		exists = owner
-	}
-
 	option = {
 		name = "society.36.a"
 		custom_tooltip = society.36.a.tooltip
@@ -1503,7 +1502,7 @@ country_event = {
 			}
 			set_relation_flag = {
 				who = root
-				flag = society_rising_to_host_flag
+				flag = society_host_to_rising_flag
 			}
 		}
 		add_modifier = { 
@@ -1836,18 +1835,38 @@ country_event = {
 		has_country_flag = society_society_1
 	}
 
-	immediate = {
-	if = { limit = { any_country = { has_country_flag = society_society_1
-									has_country_flag = society_rising_originator  }
+	immediate = {		
+		save_event_target_as = DestroyedSociety
+		if = {			
+			limit = {
+				any_country = {					
+					has_country_flag = society_republic_1
+					reverse_has_relation_flag = {
+						who = event_target:DestroyedSociety
+						flag = society_host_to_rising
 					}
-		random_country = { limit = { has_country_flag = society_society_1
-									has_country_flag = society_rising_originator }
-			remove_country_flag = society_rising_originator
-			country_event = { id = society_events.371 }
+				}
+			}
+			random_country = {
+				limit = {
+					has_country_flag = society_republic_1
+					reverse_has_relation_flag = {
+						who = event_target:DestroyedSociety
+						flag = society_host_to_rising
+					}
+				}
+				remove_country_flag = society_rising_originator
+				country_event = {
+					id = society_events.371
+				}
+				remove_relation_flag = {
+					who = event_target:DestroyedSociety
+					flag = society_host_to_rising
+				}				
+			}
 		}
-	}
-	}
-}
+	} 
+} 
 
 country_event = {
 	id = society_events.371
@@ -1890,19 +1909,38 @@ country_event = {
 		has_country_flag = society_republic_1
 	}
 
-	immediate = {
-	if = { limit = { any_country = { has_country_flag = society_republic_1
-									has_country_flag = society_rising_country }
+	immediate = {		
+		save_event_target_as = DestroyedRepublic
+		if = {			
+			limit = {
+				any_country = {					
+					has_country_flag = society_society_1
+					reverse_has_relation_flag = {
+						who = event_target:DestroyedRepublic
+						flag = society_rising_to_host
 					}
-		random_country = { limit = { has_country_flag = society_republic_1	
-									has_country_flag = society_rising_country 
-								}
-			remove_country_flag = society_rising_country
-			country_event = { id = society_events.381 }
+				}
+			}
+			random_country = {
+				limit = {
+					has_country_flag = society_society_1
+					reverse_has_relation_flag = {
+						who = event_target:DestroyedRepublic
+						flag = society_rising_to_host
+					}
+				}
+				remove_country_flag = society_rising
+				country_event = {
+					id = society_events.371
+				}
+				remove_relation_flag = {
+					who = event_target:DestroyedRepublic
+					flag = society_rising_to_host
+				}				
+			}
 		}
-	}
-	}
-}
+	} 
+} 
 
 country_event = {
 	id = society_events.381
@@ -2162,7 +2200,7 @@ country_event = {
 		country_event = { id = society_events.39 days = 350 }
 		ruler = { 
 			set_leader_flag = society_became_soveriegn
-			remove_trait = leader_trait_charismatic					
+			remove_trait = leader_trait_charismatic	
 			add_ruler_trait = leader_trait_reformer
 			add_ruler_trait = trait_ruler_warlike
 		}
