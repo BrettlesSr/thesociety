@@ -29,16 +29,7 @@ civic_society_evolution = {
 		}
 	}
 	random_weight = {
-		base = 0 # Should be fairly rare
-		modifier = {
-			factor = 0
-			NOT = { host_has_dlc = "Utopia" }
-		}
-		modifier = {
-			# civic has no effect after galaxy generation, disable for random generation
-			factor = 0
-			has_global_flag = game_started
-		}
+		base = 0
 	}
 
 	description = civic_tooltip_society_evolution_effects

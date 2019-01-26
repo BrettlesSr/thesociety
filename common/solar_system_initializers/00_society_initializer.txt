@@ -88,10 +88,8 @@ society_sol_system_initializer = {
 			tile_blockers = none
 			modifiers = none
 			init_effect = {
-			prevent_anomaly = yes
-			}
-			init_effect = {
-			generate_start_buildings_and_blockers = yes
+				prevent_anomaly = yes
+				generate_empire_home_planet = yes
 			}
 		}
 	}

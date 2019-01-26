@@ -3,18 +3,15 @@ spriteTypes = {
 		name = "GFX_evt_society_ares_face"
 		texturefile = "gfx/event_pictures/society_ares_face.dds"
 		masking_texture = "gfx/interface/situation_log/event_mask.dds"
-		allwaystransparent = yes		
 	}
 	spriteType = {
 		name = "GFX_evt_society_phobos_address"
 		texturefile = "gfx/event_pictures/society_phobos_address.dds"
 		masking_texture = "gfx/interface/situation_log/event_mask.dds"
-		allwaystransparent = yes		
 	}
 	spriteType = {
 		name = "GFX_evt_society_domes"
 		texturefile = "gfx/event_pictures/society_domes.dds"
 		masking_texture = "gfx/interface/situation_log/event_mask.dds"
-		allwaystransparent = yes		
 	}
 }

@@ -89,14 +89,6 @@ SOCIETY1 = {
 			sequential_name = "Limitanei Robotum %R%"
 		}
 		
-		android_army = {
-			sequential_name = "Robotum Superior %R%"
-		}
-
-		android_defense_army = {
-			sequential_name = "Limitanei Robotum Superior %R%"
-		}
-		
 		psionic_army = { 
 			sequential_name = "Legio Psychica %R%"
 		}

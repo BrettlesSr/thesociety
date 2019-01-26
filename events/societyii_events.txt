@@ -362,7 +362,7 @@ country_event = {
 	immediate = {
 		if = { limit = {	NOT = {
 								any_owned_planet = {
-									free_pop_tiles > 1			
+									free_housing  > 1			
 								}
 							}
 						}
@@ -371,20 +371,17 @@ country_event = {
 							}
 		}
 		if = { limit = {	any_owned_planet = {
-								free_pop_tiles > 1						
+								free_housing > 1						
 							}
 						}
 			random_owned_planet = {
 				limit = {
-					count_tile = {
-						count > 1
-						limit = { has_pop = no }
-					}
+					free_housing > 1
 				}
 				save_event_target_as = obsidian_planet
 			}
 			create_species = {
-				name = NAME_obsidian_society
+				name = "NAME_obsidian_society"
 				plural = "NAME_obsidians_society"
 				adjective = "NAME_obsidian_society"
 				class = HUM
@@ -401,13 +398,11 @@ country_event = {
 			event_target:obsidian_planet = {
 				while = {
 					count = 2
-					best_tile_for_pop = {
 						create_pop = {
 							species = event_target:obsidian_society
 							ethos = {
 								ethic = "ethic_militarist"
 							}
-						}
 					}
 				}
 			}
@@ -532,24 +527,24 @@ country_event = {
 	immediate = {
 		if = { limit = { NOT = {
 										any_owned_planet = {
-											free_pop_tiles > 1							
+											free_housing > 1							
 										}
 									}
 			}
 			country_event = { id = society_events.14 days = 30 }
 		}
 		if = { limit = {	any_owned_planet = {
-									free_pop_tiles > 1							
+									free_housing > 1							
 								}
 				} 
 			random_owned_planet = {
 				limit = {
-					free_pop_tiles > 1
+					free_housing > 1
 				}
 				save_event_target_as = grey_planet
 			}
 			create_species = {
-				name = NAME_grey_society
+				name = "NAME_grey_society"
 				plural = "NAME_greys_society"
 				adjective = "NAME_grey_society"
 				class = HUM
@@ -566,14 +561,12 @@ country_event = {
 			event_target:grey_planet = {
 				while = {
 					count = 2
-					best_tile_for_pop = {
 						create_pop = {
 							species = event_target:grey_society
 							ethos = {
 								ethic = "ethic_authoritarian"
 							}
 						}
-					}
 				}
 			}
 			#set rights
@@ -648,7 +641,8 @@ country_event = {
 			ethos = { ethic = ethic_fanatic_militarist
 						ethic = ethic_authoritarian }
 			authority = root
-			civics = random
+			civics = { civic = civic_barbaric_despoilers
+					   civic = civic_warrior_culture }
 			species = event_target:obsidian_society
 			flag = random
 			effect = {
@@ -887,17 +881,12 @@ country_event = {
 		name = "society.25.a"
 		while = {
 				count = 3
-				every_owned_planet = {
-					random_tile = {
-						limit = {
-							exists = pop 
-							pop = {
-								is_enslaved = yes
-								has_trait = trait_society_proles
-							}
-						}
-						kill_pop = yes
+				random_pop = {
+					limit = {
+						has_trait = trait_society_proles
+						is_enslaved = yes
 					}
+					kill_pop = yes
 				}
 		}
 	}
@@ -905,22 +894,14 @@ country_event = {
 		name = "society.25.b"
 		while = {
 				count = 3
-				every_owned_planet = {
-					random_tile = {
-						limit = {
-							exists = pop 
-							pop = {
-								is_enslaved = yes
-								has_trait = trait_society_proles
-								NOT = {
-									has_modifier = society_enlightened
-								}
-							}
-						}
+				random_pop = {
+					limit = {
+						has_trait = trait_society_proles
+						is_enslaved = yes
+					}
 						pop = { add_modifier = { modifier = society_enlightened days = 3600 } }
 					}
 				}
-		}
 	}
 }
 
@@ -957,7 +938,9 @@ country_event = {
 	
 	option = {
 		name = "society.27.a"
-		add_influence = -50
+		add_resource = {
+			influence = -50
+		}
 		set_country_flag = society_conspiracy_grows
 		custom_tooltip = society.27.a.tooltip
 	}
@@ -1073,7 +1056,7 @@ country_event = {
 				has_country_flag = society_society_1
 			}
 			create_leader = {
-				type = general
+				class = general
 				species = owner_main_species
 				name = "NAME_darrow_au_andromedus"
 				skill = 2
@@ -1098,7 +1081,7 @@ country_event = {
 				has_country_flag = society_society_1
 			}
 			create_leader = {
-				type = general
+				class = general
 				species = owner_main_species
 				name = "NAME_darrow_au_andromedus"
 				skill = 2
@@ -1260,9 +1243,6 @@ country_event = {
 					}
 					is_capital = no
 					exists = sector
-					sector = {
-						is_core_sector = no
-					}
 				}
 			}
 			random_owned_planet = {
@@ -1273,9 +1253,6 @@ country_event = {
 					}
 					is_capital = no
 					exists = sector
-					sector = {
-						is_core_sector = no
-					}
 				}
 				planet_event = { id = society_events.361 }
 			}
@@ -1308,18 +1285,12 @@ country_event = {
 								any_owned_planet = {
 									is_capital = no
 									exists = sector
-									sector = {
-										is_core_sector = no
-									}
 								}
 							}
 							random_owned_planet = {
 								limit = {
 									is_capital = no
 									exists = sector
-									sector = {
-										is_core_sector = no
-									}
 								}
 								planet_event = { id = society_events.361 }
 							}
@@ -1404,7 +1375,6 @@ planet_event = { #rising
 			portrait = "human"
 			name = "PRESCRIPTED_species_name_society"
 			plural = "PRESCRIPTED_species_plural_society"
-			species_bio = "The Aureates are descended from the lunar colonists who resented the shackles and obligations of their governments and shareholders back on Earth. They fought and won a war of extermination against them, establishing a Society based on slavery across the solar system. They then further consolidated their rule through surgical and genetic enhancements to themselves and to their slaves."
 			name_list = "HUMAN1"
 			traits = {
 				trait = "trait_decadent"
@@ -1445,7 +1415,7 @@ planet_event = { #rising
 							save_event_target_as = society_current_rising
 							country_event = { id = society_events.362 }
 							create_leader = { 
-								type = ruler
+								class = ruler
 								species = root.owner_species
 								name = "NAME_mustang_leader"
 								skill = 3
@@ -1520,9 +1490,21 @@ country_event = {
 		}
 
 		# baseline resource stockpile
-		add_energy = 15000
-		add_minerals = 3000
-		add_influence = 500
+		add_resource = {
+			energy = 1500
+		}
+		add_resource = {
+			food = 100
+		}
+		add_resource = {
+			minerals = 1000
+		}
+		add_resource = {
+			consumer_goods = 100
+		}
+		add_resource = {
+			influence = 300
+		}
 		add_100_unity_per_year_passed = yes # scripted effect
 
 		# clear new contact opinion modifier
@@ -1674,7 +1656,6 @@ country_event = {
 			target = event_target:society_current_rising_originator
 			except = {
 				tech_subdermal_stimulation
-				tech_galactic_benevolence
 				tech_neural_implants
 				tech_selected_lineages
 				tech_capacity_boosters
@@ -1788,7 +1769,7 @@ country_event = {
 				
 				owner = {
 					create_leader = {
-						type = scientist
+						class = scientist
 						sub_type = survey
 						name = random
 						species = owner_main_species
@@ -1842,7 +1823,7 @@ country_event = {
 					has_country_flag = society_republic_1
 					reverse_has_relation_flag = {
 						who = event_target:DestroyedSociety
-						flag = society_host_to_rising
+						flag = society_host_to_rising_flag
 					}
 				}
 			}
@@ -1851,7 +1832,7 @@ country_event = {
 					has_country_flag = society_republic_1
 					reverse_has_relation_flag = {
 						who = event_target:DestroyedSociety
-						flag = society_host_to_rising
+						flag = society_host_to_rising_flag
 					}
 				}
 				remove_country_flag = society_rising_originator
@@ -1860,7 +1841,7 @@ country_event = {
 				}
 				remove_relation_flag = {
 					who = event_target:DestroyedSociety
-					flag = society_host_to_rising
+					flag = society_host_to_rising_flag
 				}				
 			}
 		}
@@ -1916,7 +1897,7 @@ country_event = {
 					has_country_flag = society_society_1
 					reverse_has_relation_flag = {
 						who = event_target:DestroyedRepublic
-						flag = society_rising_to_host
+						flag = society_rising_to_host_flag
 					}
 				}
 			}
@@ -1925,16 +1906,16 @@ country_event = {
 					has_country_flag = society_society_1
 					reverse_has_relation_flag = {
 						who = event_target:DestroyedRepublic
-						flag = society_rising_to_host
+						flag = society_rising_to_host_flag
 					}
 				}
-				remove_country_flag = society_rising
+				remove_country_flag = society_rising_country
 				country_event = {
 					id = society_events.371
 				}
 				remove_relation_flag = {
 					who = event_target:DestroyedRepublic
-					flag = society_rising_to_host
+					flag = society_rising_to_host_flag
 				}				
 			}
 		}
@@ -2014,7 +1995,7 @@ country_event = {
 			}
 		}
 		create_leader = {
-								type = ruler
+								class =  ruler
 								species = root.owner_species
 								name = "NAME_mustang_leader"
 								skill = 3
@@ -2086,7 +2067,7 @@ country_event = {
 								has_ethic = ethic_fanatic_authoritarian
 						}
 			}
-			remove_country_flag = society_1
+			remove_country_flag = society_society_1
 			remove_modifier = society_institute_pscarred_built
 			remove_modifier = society_something_wicked
 			remove_country_flag = society_ares_insurrecting_0
