@@ -6,10 +6,11 @@ trait_society_proles = {
 	icon = "gfx/interface/icons/traits/trait_primitive.dds"
 	allowed_archetypes = { BIOLOGICAL }
 	modifier = {
-		pop_government_ethic_attraction = 0.05
+		pop_government_ethic_attraction = 0.10
 		pop_category_workers_produces_mult = 0.10
 		species_leader_exp_gain = -0.20
 		leader_skill_levels = -1
+		planet_jobs_unity_produces_add = -1
 	}
 }
 

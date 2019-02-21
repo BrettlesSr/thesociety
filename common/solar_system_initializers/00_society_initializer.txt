@@ -85,7 +85,6 @@ society_sol_system_initializer = {
 			orbit_angle = 40
 			has_ring = no
 			entity = "cold_barren_planet_luna_entity"
-			tile_blockers = none
 			modifiers = none
 			init_effect = {
 				prevent_anomaly = yes

@@ -75,6 +75,8 @@ empire_flag={
 		clothes = 0
 		ruler_title = "PRESCRIPTED_ruler_title_society"
 		ruler_title_female= "PRESCRIPTED_ruler_title_society"
+		heir_title = "N/A"
+		heir_title_female = "N/A"
 	}
 }
 

@@ -1,4 +1,4 @@
-generate_start_pops_racial_strat = {	
+generate_racial_strat = {	
 	if = { limit = { owner = { has_valid_civic = civic_society_evolution } }
 		
 		last_created_species = {
@@ -6,12 +6,11 @@ generate_start_pops_racial_strat = {
 				country = root.owner
 				type = citizenship_slavery
             }
-            set_slavery_type = {
-                type = slavery_society                
-            }
+            # set_slavery_type = {
+            #     type = slavery_society                
+            # }
             set_military_service_type = {
-                type = military_service_none
-                
+                type = military_service_none                
             }
 		}
 		while = {

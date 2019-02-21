@@ -7,7 +7,41 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	generate_start_pops_racial_strat = yes
+	immediate = {
+		if = { limit = { owner = { has_valid_civic = civic_society_evolution } }
+		
+		last_created_species = {
+			set_citizenship_type = {
+				country = root.owner
+				type = citizenship_slavery
+            }
+            set_slavery_type = {
+                type = slavery_normal          
+            }
+            set_military_service_type = {
+                type = military_service_none                
+            }
+		}
+		while = {
+			count = 14
+			random_pop = {
+				limit = { is_pop_category = worker }
+				kill_pop = yes
+			}
+		}
+		while = {
+			count = 12
+			create_pop = {
+				species = last_created_species
+				ethos = random
+			}
+        }
+        owner = {
+            set_country_flag = society_initialized_society_1
+        }	
+    }
+	}
+	
 }
 
 

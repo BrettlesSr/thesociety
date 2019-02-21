@@ -881,27 +881,31 @@ country_event = {
 		name = "society.25.a"
 		while = {
 				count = 3
-				random_pop = {
-					limit = {
-						has_trait = trait_society_proles
-						is_enslaved = yes
+				random_owned_planet = {
+					random_pop = {
+						limit = {
+							has_trait = trait_society_proles
+							is_enslaved = yes
+						}
+						kill_pop = yes
 					}
-					kill_pop = yes
-				}
+				}				
 		}
 	}
 	option = {
 		name = "society.25.b"
 		while = {
 				count = 3
-				random_pop = {
+				random_owned_planet = {
+					random_pop = {
 					limit = {
 						has_trait = trait_society_proles
 						is_enslaved = yes
 					}
 						pop = { add_modifier = { modifier = society_enlightened days = 3600 } }
-					}
-				}
+					}	
+				}				
+		}
 	}
 }
 
@@ -1360,8 +1364,8 @@ planet_event = { #rising
 							starbase = { owner = { is_same_value = root.owner } }
 						}
 					}
-					solar_system = { # never flip any planets in the capital system
-						NOT = { any_planet = { is_same_value = root.owner.capital_scope } }
+					solar_system = {
+							is_same_value = root.owner.capital_scope.solar_system  
 					}
 				}
 				effect = {
