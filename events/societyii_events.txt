@@ -840,7 +840,6 @@ country_event = {
 	immediate = {
 			country_event = { id = society_events.24 }
 			country_event = { id = society_events.32 days = 7200 }
-			#country_event = { id = society_events.32 days = 72 }
 	}
 }
 
