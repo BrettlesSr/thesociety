@@ -203,13 +203,11 @@ country_event = {
 
 	option = {
 		name = "society.5.a"
-		custom_tooltip = society.1.a.tooltip
-		
+		custom_tooltip = society.1.a.tooltip		
 			add_modifier = { 
 							modifier = society_institute_pscarred_built
 							days = -1
-							}
-		
+							}		
 	}
 }
 
@@ -390,6 +388,7 @@ country_event = {
 					trait = "trait_pc_continental_preference"
 					trait = "trait_very_strong"
 					trait = "trait_deviants"
+					trait = "trait_society_warlike"
 				}
 			}
 			last_created_species = {
@@ -710,6 +709,7 @@ custom_tooltip = society.18.a.tooltip
 			modify_species = {
 				species = event_target:obsidian_society
 				remove_trait = trait_deviants
+				remove_trait = trait_society_warlike
 				add_trait = trait_communal
 			}
 			last_created_species = { save_global_event_target_as = obsidian_society_two }
@@ -901,7 +901,10 @@ country_event = {
 						has_trait = trait_society_proles
 						is_enslaved = yes
 					}
-						pop = { add_modifier = { modifier = society_enlightened days = 3600 } }
+						modify_species = {
+							species = this
+							remove_trait = trait_society_proles
+						}
 					}	
 				}				
 		}

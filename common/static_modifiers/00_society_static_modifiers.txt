@@ -1,6 +1,7 @@
 society_institute_pscarred_built = {
 	leaders_energy_cost_mult = 0.25
 	icon = "gfx/interface/icons/modifiers/mod_leader_cost.dds"
+	custom_tooltip = society.1.a.tooltip
 }
 
 society_overstretched_grey_legions = {
@@ -13,8 +14,7 @@ society_something_wicked = {
 }
 
 society_displace_reds = {
-	planet_stability_add = -5
-	pop_growth_speed = -0.10
+	planet_stability_add = -10
 	icon = "gfx/interface/icons/planet_modifiers/pm_unrest.dds"
 }
 
@@ -58,8 +58,8 @@ society_unrest_prison = {
 }
 
 society_unrest_crash = {
-	country_energy_produces_mult = -0.05
-	icon = "gfx/interface/icons/modifiers/mod_energy_produces_mult.dds"
+	trade_value_mult = -0.1
+	icon = "gfx/interface/icons/modifiers/mod_trade_value_mult.dds"
 }
 
 society_unrest_crackdown = {

@@ -24,18 +24,19 @@ planet_event = {
 		}
 		while = {
 			count = 14
-			random_pop = {
-				limit = { is_pop_category = worker }
-				kill_pop = yes
-			}
-		}
-		while = {
-			count = 12
 			create_pop = {
 				species = last_created_species
 				ethos = random
 			}
         }
+		while = {
+			count = 16
+			random_pop = {
+				limit = { is_pop_category = worker }
+				kill_pop = yes
+			}
+		}
+		
         owner = {
             set_country_flag = society_initialized_society_1
         }	
