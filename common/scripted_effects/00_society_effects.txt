@@ -6,9 +6,6 @@ generate_racial_strat = {
 				country = root.owner
 				type = citizenship_slavery
             }
-            # set_slavery_type = {
-            #     type = slavery_society                
-            # }
             set_military_service_type = {
                 type = military_service_none                
             }

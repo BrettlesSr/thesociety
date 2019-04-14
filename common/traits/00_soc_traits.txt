@@ -7,10 +7,23 @@ trait_society_proles = {
 	allowed_archetypes = { BIOLOGICAL }
 	modifier = {
 		pop_government_ethic_attraction = 0.10
-		pop_category_workers_produces_mult = 0.10
-		species_leader_exp_gain = -0.20
+		pop_cat_worker_happiness = 0.2
+		pop_cat_slave_happiness = 0.2
 		leader_skill_levels = -1
-		planet_jobs_unity_produces_add = -1
+		planet_jobs_unity_produces_mult = -1
+	}
+}
+
+trait_society_warlike = {
+	cost = 0
+	initial = no
+	sapient = no
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_survivor.dds"
+	allowed_archetypes = { BIOLOGICAL }
+	modifier = {
+		army_damage_mult = 0.05
+		pop_category_workers_produces_mult = -0.05
 	}
 }
 
@@ -23,7 +36,7 @@ trait_pscarred_admiral = {
 	}
 	modifier = {
 		ship_speed_mult = 0.05
-		ship_fire_rate_mult = 0.05
+		ship_fire_rate_mult = 0.1
 	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
@@ -39,7 +52,7 @@ trait_pscarred_scientist = {
 		owner = { has_country_flag = society_institute_pscarred_built }
 	}
 	modifier = {
-		all_technology_research_speed = 0.05
+		all_technology_research_speed = 0.04
 		ship_anomaly_generation_chance_mult = 0.01
 	}
 	leader_trait = { scientist }
@@ -84,7 +97,7 @@ trait_pscarred_governor = {
 		owner = { has_country_flag = society_institute_pscarred_built }
 	}
 	modifier = {
-		planet_jobs_slave_produces_mult = 0.05
+		planet_jobs_slave_produces_mult = 0.04
 		deposit_blockers_cost_mult = -0.05
 		planet_clear_blocker_time_mult = -0.05
 	}
@@ -102,8 +115,8 @@ trait_pscarred_ruler = {
 		owner = { has_country_flag = society_institute_pscarred_built }
 	}
 	modifier = {
-		pop_government_ethic_attraction = 0.5
-		country_base_influence_produces_add = 0.5
+		pop_government_ethic_attraction = 0.05
+		country_base_influence_produces_add = 0.25
 	}
 	leader_trait = { ruler }
 	leader_class = { ruler }
