@@ -15,9 +15,6 @@ on_ruler_back_to_pre_ruler_class = {
 # scope: country, from: leader
 # adds peerless scars
 on_leader_spawned = {
-	events = {
-		#society_events.7
-	}
 	random_events = {
 		50 = society_events.7
 		50 = 0

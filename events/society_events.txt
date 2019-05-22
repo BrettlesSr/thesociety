@@ -9,40 +9,57 @@ planet_event = {
 
 	immediate = {
 		if = { limit = { owner = { has_valid_civic = civic_society_evolution } }
-		
-		last_created_species = {
+
+			while = {
+				count = 13
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+			}		
+
+			while = {
+				count = 15
+				random_pop = {
+					limit = {
+						is_pop_category = worker
+						is_same_species = root.owner_species
+					}
+					kill_pop = yes
+				}
+			}				
+
+        	owner = {
+        	    set_country_flag = society_initialized_society_1
+			}
+			
+			planet_event = { id = society_events.129 days = 1 }
+    	}
+	}	
+}
+
+
+
+planet_event = {
+	id = society_events.129
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_pop = {
+			limit = {
+				has_trait = trait_society_proles
+			}
 			set_citizenship_type = {
-				country = root.owner
-				type = citizenship_slavery
-            }
-            set_slavery_type = {
-                type = slavery_normal          
-            }
-            set_military_service_type = {
-                type = military_service_none                
+				type = citizenship_slavery 
+				cooldown = no
+			}
+			set_military_service_type = {
+				type = military_service_none  
+				cooldown = no              
             }
 		}
-		while = {
-			count = 14
-			create_pop = {
-				species = last_created_species
-				ethos = random
-			}
-        }
-		while = {
-			count = 16
-			random_pop = {
-				limit = { is_pop_category = worker }
-				kill_pop = yes
-			}
-		}
-		
-        owner = {
-            set_country_flag = society_initialized_society_1
-        }	
-    }
 	}
-	
 }
 
 
