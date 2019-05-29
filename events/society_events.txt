@@ -31,6 +31,9 @@ planet_event = {
 
         	owner = {
         	    set_country_flag = society_initialized_society_1
+				add_resource = {
+					influence = 100
+				}
 			}
 			
 			planet_event = { id = society_events.129 days = 1 }
@@ -48,7 +51,9 @@ planet_event = {
 	immediate = {
 		random_pop = {
 			limit = {
-				has_trait = trait_society_proles
+				NOT = {
+					is_same_species = owner_main_species
+				}				
 			}
 			set_citizenship_type = {
 				type = citizenship_slavery 

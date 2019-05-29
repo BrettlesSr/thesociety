@@ -37,7 +37,7 @@ civic_society_evolution = {
 	has_secondary_species = {	# see game_start.11
 		title = civic_syncretic_evolution_secondary_species
 		traits = {
-			trait = trait_society_proles
+			trait = trait_communal
 			trait = trait_industrious
 			trait = trait_fleeting
 		}

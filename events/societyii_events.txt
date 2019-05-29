@@ -788,7 +788,6 @@ country_event = {
 		has_country_flag = society_society_1
 		has_valid_civic = civic_society_evolution
 		any_owned_pop = {
-			has_trait = trait_society_proles
 			is_enslaved = yes
 		}
 	}
@@ -883,7 +882,6 @@ country_event = {
 				random_owned_planet = {
 					random_pop = {
 						limit = {
-							has_trait = trait_society_proles
 							is_enslaved = yes
 						}
 						kill_pop = yes
@@ -898,12 +896,11 @@ country_event = {
 				random_owned_planet = {
 					random_pop = {
 					limit = {
-						has_trait = trait_society_proles
 						is_enslaved = yes
 					}
-						modify_species = {
-							species = this
-							remove_trait = trait_society_proles
+						add_modifier = {
+							modifier = society_enlightened
+							days = 3600				
 						}
 					}	
 				}				
@@ -1175,7 +1172,6 @@ country_event = {
 		if = { limit =	{	has_valid_civic = civic_society_evolution
 							has_country_flag = society_society_1
 							any_owned_pop = {
-								has_trait = trait_society_proles
 								is_enslaved = yes
 							}
 						}
@@ -1231,7 +1227,6 @@ country_event = {
 			has_valid_civic = civic_society_evolution
 							has_country_flag = society_society_1
 							any_owned_pop = {
-								has_trait = trait_society_proles
 								is_enslaved = yes
 							}
 		
@@ -1244,7 +1239,6 @@ country_event = {
 			limit = { 
 				any_owned_planet = {
 					any_owned_pop = {
-						has_trait = trait_society_proles
 						is_enslaved = yes
 					}
 					is_capital = no
@@ -1254,7 +1248,6 @@ country_event = {
 			random_owned_planet = {
 				limit = {
 					any_owned_pop = {
-						has_trait = trait_society_proles
 						is_enslaved = yes
 					}
 					is_capital = no
@@ -1268,7 +1261,6 @@ country_event = {
 					limit = {
 						any_owned_planet = {
 							any_owned_pop = {
-								has_trait = trait_society_proles
 								is_enslaved = yes
 							}
 							is_capital = no
@@ -1277,7 +1269,6 @@ country_event = {
 					random_owned_planet = {
 						limit = {
 							any_owned_pop = {
-								has_trait = trait_society_proles
 								is_enslaved = yes
 							}
 							is_capital = no
@@ -2081,14 +2072,10 @@ country_event = {
 			remove_country_flag = society_obsidians_deployed
 			remove_country_flag = society_greys_deployed
 			remove_country_flag = society_conspiracy_grows
-			#remove_civic = civic_society_evolution
-			every_owned_planet = {
-				#remove_planet_flag = 
-			}
 			every_owned_pop = {
-				modify_species = {
-					species = this
-					remove_trait = trait_society_proles
+				add_modifier = {
+					modifier = society_enlightened
+					days = 3600				
 				}
 			}
 		}
@@ -2110,8 +2097,7 @@ country_event = {
 							NOT = { has_country_flag = society_darrow_died }
 							from = { has_leader_flag = society_darrow }
 			}
-			country_event = { id = society_events.33 }
-			
+			country_event = { id = society_events.33 }			
 		}
 }
 }
