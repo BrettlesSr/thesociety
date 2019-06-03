@@ -410,7 +410,10 @@ country_event = {
 				set_citizenship_type = {
 						country = root.owner
 						type = citizenship_slavery
-					}
+				}
+				set_military_service_type = {
+					type = military_service_limited					
+				}
 				set_slavery_type = {
 					country = root.owner 
 					type = slavery_military 
@@ -568,8 +571,24 @@ country_event = {
 							}
 						}
 				}
+				random_pop = {
+					limit = {
+							is_same_species = event_target:grey_society
+					}
+					set_citizenship_type = {
+						type = citizenship_slavery 
+						cooldown = no
+					}
+					set_military_service_type = {
+						type = military_service_limited 
+						cooldown = no              
+					}
+					set_slavery_type = {
+						type = slavery_military
+					}
+				}
 			}
-			#set rights
+			
 			set_country_flag = society_greys_deployed
 		}
 	}
@@ -773,6 +792,23 @@ country_event = {
 				}
 				country_event = { id = society_events.18 } 
 				remove_country_flag = society_dark_revolt_begun 
+			}		
+		}
+		if = {
+			limit = {
+				from = {						
+					has_country_flag = society_dark_revolt_begun						
+				}
+				has_country_flag = society_obsidian_rebels
+			}
+			from = {
+				if = {
+					limit = {
+					has_country_flag = society_dark_revolt_begun				
+				}
+				country_event = { id = society_events.18 } 
+				remove_country_flag = society_dark_revolt_begun 
+				}				
 			}		
 		}
 	}
@@ -2272,4 +2308,50 @@ country_event = {
 
 country_event = {
 	id = society_events.48
+	is_triggered_only = yes
+	hide_window = no
+
+	title = rising.48
+	desc = rising.48.desc
+	picture = GFX_evt_victorious_army
+
+	option = {
+		name = "society.48.a"
+		hidden_effect = {
+			country_event = { id = society_events.18 days = 10 }
+		}
+	}
+}
+
+country_event = {
+	id = society_events.49
+	mean_time_to_happen = {
+		months = 6
+	}
+	title = rising.49
+	desc = rising.49.desc
+	picture = GFX_evt_news_room
+
+	option = {
+		name = "society.49.a"
+		trigger = {
+			NOT = {
+				has_modifier = society_scrounge_influence
+			}			
+		}
+		add_resource = {
+			influence = 100
+		}
+		add_modifier = {
+			modifier = society_scrounge_influence
+			months = 50
+		}
+	}
+	option = {
+		name = "society.49.b"
+		add_modifier = {
+			modifier = society_massive_unrest
+			years = 50
+		}
+	}
 }
