@@ -358,6 +358,7 @@ country_event = {
 	is_triggered_only = yes
 	
 	immediate = {
+		
 		if = { limit = {	NOT = {
 								any_owned_planet = {
 									free_housing  > 1			
@@ -658,26 +659,39 @@ country_event = {
 			}
 		}
 	}
-			every_owned_pop = {
-				limit = { is_same_species = event_target:obsidian_rebels }
-				planet = {
-						create_army = {
-							owner = event_target:obsidian_rebels
-							species = event_target:obsidian_society
-							type = "assault_army"
-						}
-						random_list = {
-							20 = {	create_army = {
-										owner = event_target:obsidian_rebels
-										species = event_target:obsidian_society
-										type = "assault_army"
-									}
+	every_owned_pop = {
+		limit = { is_same_species = event_target:obsidian_rebels }
+		planet = {
+				create_army = {
+					owner = event_target:obsidian_rebels
+					species = event_target:obsidian_society
+					type = "assault_army"
+				}
+				random_list = {
+					20 = {	create_army = {
+								owner = event_target:obsidian_rebels
+								species = event_target:obsidian_society
+								type = "assault_army"
 							}
-							80 =	{ }
-						}
-						set_planet_flag = society_dark_revolt
 					}
+					80 =	{ }
+				}
+				set_planet_flag = society_dark_revolt
 			}
+	}
+	if = {
+		limit = {
+			NOT = {
+				any_owned_planet = {
+					has_planet_flag = society_dark_revolt
+				}
+			}
+		}
+		country_event = {
+			id = society_events.48
+		}
+	}
+	
 	}
 	
 	option = {
@@ -847,7 +861,7 @@ country_event = {
 	hide_window = no
 	fire_only_once = yes
 	is_triggered_only = yes
-	
+		
 	title = rising.24
 	desc = rising.24.desc
 	picture = GFX_evt_society_ares_face
@@ -869,6 +883,9 @@ country_event = {
 	hide_window = no
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		has_edict = society_great_lie
+	}
 	
 	title = rising.25
 	desc = rising.25.desc
@@ -897,6 +914,9 @@ country_event = {
 					random_pop = {
 					limit = {
 						is_enslaved = yes
+						NOT ={
+							has_modifier = society_enlightened
+						}						
 					}
 						add_modifier = {
 							modifier = society_enlightened
@@ -1333,7 +1353,7 @@ planet_event = { #rising
 		name = "society.36.b"
 		custom_tooltip = society.36.b.tooltip
 		hidden_effect = {
-			event_target:society_the_rising = {
+			event_target:society_current_rising = {
 				set_player = event_target:society_the_rising_originator
 			}
 		}
@@ -1358,7 +1378,9 @@ planet_event = { #rising
 						}
 					}
 					solar_system = {
+						NOT = {
 							is_same_value = root.owner.capital_scope.solar_system  
+						}							
 					}
 				}
 				effect = {
@@ -1463,7 +1485,7 @@ country_event = {
 			set_country_flag = society_rising_originator@root
 			set_country_flag = society_rising_originator
 			add_modifier = { 
-				modifier = society_red_risen
+				modifier = society_red_rising
 				days = 5000
 			}
 			set_relation_flag = {
@@ -1472,7 +1494,7 @@ country_event = {
 			}
 		}
 		add_modifier = { 
-				modifier = society_red_risen
+				modifier = society_red_rising
 				days = 5000
 			}
 
@@ -1683,15 +1705,6 @@ country_event = {
 			attacker_war_goal = "wg_society_rising"
 		}
 
-		# add modifier for AI
-		if = {
-			limit = { is_ai = yes }
-			add_modifier = {
-				modifier = uprising_ai_buff
-				days = 1800
-			}
-		}
-
 		# create fleets
 		if = {
 			limit = { event_target:society_current_rising_originator = { has_country_flag = society_conspiracy_grows } }
@@ -1749,6 +1762,22 @@ country_event = {
 					}
 				}
 			}
+
+		# add modifier for AI, including 10x naval cap
+		if = {
+			limit = { is_ai = yes }
+			add_modifier = {
+				modifier = uprising_ai_buff
+				days = 1800
+			}
+		}
+		# add modifier for player, 10x naval cap
+		else = {
+			add_modifier = {
+				modifier = uprising_player_buff
+				days = 1800
+			}
+		}
 		
 
 		#science
@@ -2239,4 +2268,8 @@ country_event = {
 			}
 		}
 	}
+}
+
+country_event = {
+	id = society_events.48
 }
