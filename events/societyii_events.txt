@@ -2132,6 +2132,7 @@ country_event = {
 			remove_country_flag = society_society_1
 			remove_modifier = society_institute_pscarred_built
 			remove_modifier = society_something_wicked
+			remove_modifier = society_massive_unrest
 			remove_country_flag = society_ares_insurrecting_0
 			remove_country_flag = society_institute_pscarred_built
 			remove_country_flag = society_obsidians_deployed
