@@ -75,8 +75,3 @@ society_massive_unrest = {
 	planet_jobs_slave_produces_mult = -0.5
 	icon = "gfx/interface/icons/modifiers/mod_pop_eff_wo_slaves.dds"
 }
-
-society_scrounge_influence = {
-	country_base_influence_cost_add = 2
-	icon = "gfx/interface/icons/modifiers/mod_influence_produces_add.dds"
-}

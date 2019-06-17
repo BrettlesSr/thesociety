@@ -48,7 +48,7 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	immediate = {
+	immediate = {		
 		random_pop = {
 			limit = {
 				NOT = {
@@ -64,6 +64,24 @@ planet_event = {
 				cooldown = no              
             }
 		}
+		planet_event = { id = society_events.130 days = 1 }
+	}
+}
+
+planet_event = {
+	id = society_events.130
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			any_pop = {
+				is_enslaved = yes
+			}
+		}		
+	}
+
+	immediate = {
+		planet_event = { id = society_events.129 days = 1 }
 	}
 }
 

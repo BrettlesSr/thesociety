@@ -16,7 +16,7 @@ society_great_lie = {
 	}
 
 	effect = {
-		remove_modifier = society_scrounge_influence
+		remove_modifier = society_massive_unrest
 	}
 	
 	potential = {

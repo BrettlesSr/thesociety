@@ -740,10 +740,8 @@ custom_tooltip = society.18.a.tooltip
 		}
 		every_owned_planet = {
 			modify_species = {
-				species = event_target:obsidian_society
+				species = event_target:obsidian_society				
 				remove_trait = trait_deviants
-				remove_trait = trait_society_warlike
-				add_trait = trait_communal
 			}
 			last_created_species = { save_global_event_target_as = obsidian_society_two }
 			planet_event = { id = society_events.20 }
@@ -822,7 +820,7 @@ planet_event = {
 	immediate = {
 		modify_species = {
 			species = event_target:obsidian_society_two
-			add_trait = trait_nonadaptive
+			add_trait = trait_nonadaptive			
 		}
 	}
 }
@@ -930,6 +928,7 @@ country_event = {
 		
 	option = {
 		name = "society.25.a"
+		custom_tooltip = society.25.a.tooltip	
 		while = {
 				count = 3
 				random_owned_planet = {
@@ -944,6 +943,7 @@ country_event = {
 	}
 	option = {
 		name = "society.25.b"
+		custom_tooltip = society.25.b.tooltip	
 		while = {
 				count = 3
 				random_owned_planet = {
@@ -2329,25 +2329,18 @@ country_event = {
 	mean_time_to_happen = {
 		months = 6
 	}
+	trigger = {
+		NOT = {
+			has_modifier = society_massive_unrest
+		}
+		NOT = {
+			has_edict = society_great_lie
+		}
+	}
 	title = rising.49
 	desc = rising.49.desc
 	picture = GFX_evt_news_room
 
-	option = {
-		name = "society.49.a"
-		trigger = {
-			NOT = {
-				has_modifier = society_scrounge_influence
-			}			
-		}
-		add_resource = {
-			influence = 100
-		}
-		add_modifier = {
-			modifier = society_scrounge_influence
-			months = 50
-		}
-	}
 	option = {
 		name = "society.49.b"
 		add_modifier = {

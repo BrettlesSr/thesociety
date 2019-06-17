@@ -113,6 +113,8 @@
  rising.25.desc:0 "'Your past is a lie' grates the man in the red helm 'Join us and be free'.\n\nThis broadcast has gone out to thousands of Red mines, thanks to the work of hackers in league with The Sons of Ares, and now thousands of Red miners know or suspect the truth; that their noble sacrifice is a lie and the worlds they labour on are not barren un-terraformed wastelands. All that remains is to decide what to do with the enlightened ones."
  society.25.a:0 "Purge them all, and repopulate the mines with loyal Reds."
  society.25.b:0 "Step up propaganda efforts, and keep a close eye."
+ society.25.a.tooltip:0 "Three random enslaved pop will be killed."
+ society.25.b.tooltip:0 "Three random slave pops will get the Enlightened modifier which will reduce their happiness by 25% for ten years."
  rising.26:0 "Sons of Ares- Terrorist bombings"
  rising.26.desc:0 "A brothel for Golds, a Red prison, a Blue academy, even an Obsidian outpost. Four simultaneous targets, across the Society, struck by military grade explosives. HoloNet broadcasts amplify the damage, emphasising the inability of the state to prevent such heinous violence."
  society.26.a:0 "This is a dark day."
