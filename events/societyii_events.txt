@@ -84,8 +84,8 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 6
-		#months = 270
+		#months = 6
+		months = 270
 	}
 	
 	immediate = {
@@ -307,8 +307,8 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 6
-		#months = 120
+		#months = 6
+		months = 120
 	}
 	
 	immediate = {
@@ -841,8 +841,8 @@ country_event = {
 	}
 		
 	mean_time_to_happen = {
-		months = 6
-		#months = 600
+		#months = 6
+		months = 600
 	}
 	
 	immediate = {
@@ -2000,6 +2000,7 @@ country_event = {
 
 	immediate = {
 			remove_modifier = society_red_rising
+			remove_modifier = society_secret_red
 		add_modifier = { 
 				modifier = society_red_risen
 				days = 1800
