@@ -94,8 +94,7 @@ country_event = {
 									OR = {
 										has_ethic = ethic_fanatic_authoritarian
 										has_ethic = ethic_authoritarian
-									}
-						 
+									}						 
 						}
 			if = {
 			limit = {
@@ -1745,7 +1744,7 @@ country_event = {
 		if = {
 			limit = { event_target:society_current_rising_originator = { has_country_flag = society_conspiracy_grows } }
 			
-			# conspiracy fleets, 100% naval cap
+			# conspiracy fleets, 70% naval cap
 			
 			create_fleet_from_naval_cap = 0.1
 			random_owned_planet = {
@@ -1761,21 +1760,14 @@ country_event = {
 				}
 			}
 
-			create_fleet_from_naval_cap = 0.3
-			random_owned_planet = {
-				last_created_fleet = {
-					set_location = prev
-				}
-			}
-
 			create_fleet_from_naval_cap = 0.4
-			#capital_scope = {
+			random_owned_planet = {
 				last_created_fleet = {
 					set_location = root.capital_scope
 				}
-			#}
+			}
 		}
-			# regular fleets, 60% naval cap
+			# regular fleets, 40% naval cap
 			else = {
 				create_fleet_from_naval_cap = 0.1
 				random_owned_planet = {
@@ -1783,14 +1775,6 @@ country_event = {
 						set_location = prev
 					}
 				}
-
-				create_fleet_from_naval_cap = 0.2
-				random_owned_planet = {
-					last_created_fleet = {
-						set_location = prev
-					}
-				}
-
 				create_fleet_from_naval_cap = 0.3
 				random_owned_planet = {
 					last_created_fleet = {
@@ -1813,8 +1797,7 @@ country_event = {
 				modifier = uprising_player_buff
 				days = 1800
 			}
-		}
-		
+		}		
 
 		#science
 		create_fleet = {
@@ -2140,10 +2123,7 @@ country_event = {
 			remove_country_flag = society_greys_deployed
 			remove_country_flag = society_conspiracy_grows
 			every_owned_pop = {
-				add_modifier = {
-					modifier = society_enlightened
-					days = 3600				
-				}
+				remove_modifier = society_enlightened
 			}
 		}
 	}
