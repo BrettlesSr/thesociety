@@ -268,30 +268,25 @@ country_event = {
 			if = {
 				limit = { leader_class = admiral }
 				add_trait = trait_pscarred_admiral
-				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = general }
 				add_trait = trait_pscarred_general
-				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = governor }
 				add_trait = trait_pscarred_governor
-				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = scientist }
 				add_trait = trait_pscarred_scientist
-				#add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
 			if = {
 				limit = { leader_class = ruler }
-				#add_trait = trait_pscarred_ruler
 				add_ruler_trait = trait_pscarred_ruler
 				break = yes
 			}
@@ -1122,7 +1117,7 @@ country_event = {
 				gender = male
 				traits = {
 					trait = leader_trait_charismatic
-					trait = trait_pscarred_general
+					trait = trait_pscarred_general					
 				}
 			}
 			last_created_leader = { 
@@ -1190,19 +1185,36 @@ country_event = {
 	picture = GFX_evt_space_funeral
 	
 	trigger = {
-		NOR = { event_target:darrow_au_andromedus = { leader_class = ruler } 
-				event_target:darrow_au_andromedus = { has_leader_flag = society_became_soveriegn } }
+		NOR = {
+			ruler = {					
+				has_leader_flag = society_darrow
+			}
+			ruler = {					
+				has_leader_flag = society_became_soveriegn
+			}
+		}	
 	}
 	
 	immediate = {
 		if = {
+			limit = {
+				NOR = {
+					ruler = {					
+						has_leader_flag = society_darrow
+					}
+					ruler = {					
+						has_leader_flag = society_became_soveriegn
+					}
+				}				
+			}	
+			set_country_flag = society_darrow_died
+			every_owned_leader = {
 				limit = {
-					NOT = { event_target:darrow_au_andromedus = { leader_class = ruler } }
-					NOT = { event_target:darrow_au_andromedus = { has_leader_flag = society_became_soveriegn } }
-				}	
-		set_country_flag = society_darrow_died
-		event_target:darrow_au_andromedus = { kill_leader = { type = general } }
-		country_event = { id = society_events.34 days = 180 }
+					has_leader_flag = society_darrow
+				}
+				kill_leader = { type = general } 
+			}
+			country_event = { id = society_events.34 days = 180 }
 		}
 	}
 	
@@ -2220,11 +2232,7 @@ country_event = {
 	immediate = {
 		country_event = { id = society_events.39 days = 350 }
 		ruler = { 
-			set_leader_flag = society_became_soveriegn
-			# remove_trait = leader_trait_charismatic	
-			remove_ruler_trait = leader_trait_charismatic	
-			add_ruler_trait = leader_trait_reformer
-			add_ruler_trait = trait_ruler_warlike
+			set_leader_flag = society_became_soveriegn			
 		}
 	}
 }
