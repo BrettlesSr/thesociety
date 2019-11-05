@@ -1909,6 +1909,7 @@ country_event = {
 
 	immediate = {
 		remove_modifier = society_red_rising
+		remove_modifier = society_massive_unrest
 		add_modifier = {
 				modifier = society_red_risen
 				days = 1800
@@ -2016,7 +2017,8 @@ country_event = {
 
 	option = {
 		name = "society.39.a"
-		hidden_effect = {
+		kill_leader = { type = ruler }
+		hidden_effect = {			
 			country_event = { id = society_events.46 }
 		}
 	}
@@ -2219,7 +2221,8 @@ country_event = {
 		country_event = { id = society_events.39 days = 350 }
 		ruler = { 
 			set_leader_flag = society_became_soveriegn
-			remove_trait = leader_trait_charismatic	
+			# remove_trait = leader_trait_charismatic	
+			remove_ruler_trait = leader_trait_charismatic	
 			add_ruler_trait = leader_trait_reformer
 			add_ruler_trait = trait_ruler_warlike
 		}
@@ -2316,6 +2319,9 @@ country_event = {
 		}
 		NOT = {
 			has_edict = society_great_lie
+		}
+		NOT = {
+			has_country_flag = society_republic_1
 		}
 	}
 	title = rising.49
